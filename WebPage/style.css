@@ -10,7 +10,7 @@
     color: white;
     font-family: 'Alegreya Sans', sans-serif;
     transition: background-color 1s ease 0s;
-    height: 120px;
+    height: 100px;
    }
   
 
@@ -82,3 +82,17 @@
   }
 
 /* End of Navigation var and side var */
+
+.footer{
+  background-color: rgb(51, 51, 51);
+  color: white;
+}
+
+.footer-links:hover{
+  color: #A37E2C;
+}
+
+.footer-links{
+  color: white;
+}
+
