@@ -1,0 +1,13 @@
+{
+    "post": [
+      { "id": 1, "title": "json-server", "author": "typicode" },
+      { "id": 2, "title": "json-server", "author": "typicode" }
+    ],
+    "comments": [
+      { "id": 1, "body": "some comment", "postId": 1 }
+    ],
+    "profile": { "name": "typicode" },
+    "users":[{"name":"rut","lastname":"navarro","email":"rut@gmail.com","password":"1234","genre":"M","date":"05-12-1996","url":"https://randomuser.me/api/portraits/women/1.jpg","token":"KZLvtwactX-2"},
+        {"name":"fernanda","lastname":"navarro","email":"fernanda@gmail.com","password":"1234","genre":"M","date":"05-12-1996","url":"https://randomuser.me/api/portraits/women/2.jpg","token":"wfhlbf0qpn-3"},
+        {"name":"carlitos","lastname":"flores","email":"carlos@gmail.com","password":"1234","genre":"M","date":"05-12-1996","url":"https://randomuser.me/api/portraits/women/3.jpg","token":"7TTwgUvTxy-4"}]
+  }
