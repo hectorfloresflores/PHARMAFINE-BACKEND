@@ -87,16 +87,19 @@
 
 /* End of Navigation var and side var */
 
+/*Start of Footer*/
 .footer{
   background-color: #A37E2C;
-  color: black;
+  color: white;
 }
 
 .footer-links:hover{
   color: #A37E2C;
+  text-decoration:none;
 }
 
 .footer-links{
   color: white;
 }
 
+/*End of Footer*/

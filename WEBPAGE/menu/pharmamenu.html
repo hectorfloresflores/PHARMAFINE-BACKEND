@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<body>
+        <nav id="ddmenu">
+                <!-- Start of navigation -->
+  <nav class="navbar navbar-expand  fixed-top nav-pharma">
+        <!-- Logo centered -->
+        <nav class="navbar navbar-brand navbar-collapse justify-content-center">
+          <div style="position: absolute;left: 0;">
+            <div id="mySidenav" class="sidenav">
+              <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">x</a>
+              <a href="#">About</a>
+              <a href="#">Services</a>
+              <a href="#">Clients</a>
+              <a href="#">Contact</a>
+            </div>
+    
+            <span class="burger-menu" onclick="openNav()">
+              <img src="./images/icons/menu.png" width="25" height="" alt="" />
+            </span>
+    
+            <script>
+              function openNav() {
+                document.getElementById("mySidenav").style.width = "250px";
+              }
+    
+              function closeNav() {
+                document.getElementById("mySidenav").style.width = "0";
+              }
+            </script>
+          </div>
+    
+          <a class="navbar-brand">
+            <img src="./images/core/pharma-logo.png" width="100" height="" alt="" />
+          </a>
+          <div style="position: absolute;right:0;" class="leftNav">
+            <i data-toggle="modal" data-target="#cartModal" style="font-style: normal">
+              <input type="image" class="bag align-middle" src="./images/icons/shopping-bag.png" width="25" height=""
+                alt="" />
+              <span class="align-text-top carrito">Carrito</span>
+            </i>
+            <i data-toggle="modal" data-target="#exampleModalCenter" style="font-style: normal">
+              <input type="image" class="account align-middle" src="./images/icons/account.png" width="25" height=""
+                alt="" />
+              <span class="align-text-top cuenta">Cuenta</span>
+            </i>
+          </div>
+        </nav>
+    
+        <script>
+          $(document).ready(function () {
+            $(window).scroll(function () {
+              if ($(window).scrollTop() > 800) {
+                $(".nav-pharma").css("background", "rgba(0, 0, 0, 0.6)");
+              } else {
+                $(".nav-pharma").css("background", "none");
+              }
+            });
+    
+            $(window).on("resize", function () {
+              var win = $(this); //this = window
+    
+              if (win.width() < 800) {
+                $(".carrito").css("display", "none");
+                $(".cuenta").css("display", "none");
+              } else {
+                $(".carrito").css("display", "inline");
+                $(".cuenta").css("display", "inline");
+              }
+            });
+          });
+        </script>
+      </nav>
+    
+      <!-- Modal Sign up-->
+      <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle"
+        aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered" role="document">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title" id="exampleModalLongTitle">Iniciar Sesión</h5>
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+            <div class="modal-body">
+              <form id="ph_sign_in_form">
+                <div class="form-group">
+                  <label for="exampleInputEmail">Correo ó Usuario</label>
+                  <input type="email" class="form-control" id="ph_sign_in_email" placeholder="Introduce tu correo" />
+    
+                </div>
+                <div class="form-group">Contraseña
+                  <label for="ph_sign_in_password">Contraseña</label>
+                  <input type="password" class="form-control" id="ph_sign_in_password"
+                    placeholder="Introduce tu contraseña" />
+                </div>
+                <button type="button"  id="ph_sign_in" class="btn btn-outline-secondary">Ingresar</button>
+                <p></p>
+                <div id="ph_sign_in_error" class="alert alert-warning alert-dismissible fade show" hidden>
+                  <strong>Error de auntenticación</strong> Revisa usuario o contraseña
+      
+                </div>
+              </form>
+            </div>
+            <div class="modal-footer">
+    
+    
+              <a href="#ph-modal-register"  data-toggle="modal" class="btn btn-outline-success" data-dismiss="modal"
+                role="button">Register</a>
+    
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- end of modal sign up -->
+    
+      <!-- Modal Register-->
+      <div class="modal fade " id="ph-modal-register" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle"
+        aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered" role="document">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title" id="exampleModalLongTitle">Registro con datos</h5>
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+            <form action="" method=post
+              oninput='up2.setCustomValidity(up2.value != up.value ? "Passwords do not match." : "")'>
+              <div class="modal-body">
+    
+                <div class="row justify-content-center">
+                  <div class="form-group col-md-6">
+    
+                    <input type="text" class="form-control" placeholder="Nombre" required />
+                  </div>
+                  <div class="form-group col-md-6">
+                    <input type="text" class="form-control" placeholder="Apellido" required />
+                  </div>
+    
+                </div>
+                <div class="form-group">
+                  <input type="email" class="form-control" placeholder="correo" required />
+                </div>
+                <div class="form-group">
+                  <input type="password" class="form-control" id="password1" placeholder="Contraseña" required name=up />
+                </div>
+                <div class="form-group">
+                  <input type="password" class="form-control" id="password2" placeholder="Confirmar Contraseña" name=up2 />
+                </div>
+                <div class="form-group ">
+                  <label class="checkbox-inline"><input type="checkbox" required> Acepto los <a href="#">términos
+                      de uso</a> y el <a href="#"> aviso de privacidad</a></label>
+                </div>
+                
+               
+              </div>
+              <div class="modal-footer">
+    
+                <button id="ph_account_create" class="btn btn-outline-success" 
+                  type="submit" >Crear Cuenta</a>
+              </div>
+    
+            </form>
+          </div>
+        </div>
+      </div>
+    
+      <!-- end of modal register -->
+        </nav> 
+</body>
+</html>
