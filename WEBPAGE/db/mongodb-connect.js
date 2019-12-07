@@ -1,9 +1,9 @@
 /*To connect with mongo database easy */
 const mongoose = require("mongoose")
 /*To load configuration of mongo db, dont forget to added it to .gitignore */
-const config  =require("./config.json")
+const config  =require("../config.json")
 /**Load mongo url to connect */
-let mongoDB = `mongodb+srv://${config.username}:${config.password}@cluster0-elqer.mongodb.net/${config.dbname}?retryWrites=true&w=majority`
+let mongoDB = `mongodb+srv://admin:${config.password}@cluster-vs1if.mongodb.net/${config.dbname}?retryWrites=true&w=majority`
 
 /*Try connection with mongo*/
 mongoose.connect(mongoDB, {

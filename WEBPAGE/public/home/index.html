@@ -65,10 +65,10 @@
         <img src="../images/core/pharma-logo.png" width="100" height="" alt="" />
       </a>
       <div style="position: absolute;right:0;" class="leftNav">
-        <i data-toggle="modal" data-target="#cartModal" style="font-style: normal">
+        <i id="ph_checkout" hidden style="font-style: normal">
           <input type="image" class="bag align-middle" src="../images/icons/shopping-bag.png" width="25" height=""
             alt="" />
-          <span class="align-text-top carrito">Carrito</span>
+          <span class="align-text-top carrito" >Carrito</span>
         </i>
         <i data-toggle="modal" data-target="#exampleModalCenter" style="font-style: normal">
           <input type="image" class="account align-middle" src="../images/icons/account.png" width="25" height=""
@@ -226,62 +226,6 @@
   <!-- end of modal sent mail -->
 
 
-  <!-- Modal cart -->
-  <div class="modal fade" id="cartModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
-    aria-hidden="true">
-    <div class="modal-dialog modal-lg modal-dialog-centered" role="document">
-      <div class="modal-content">
-        <div class="modal-header border-bottom-0">
-          <h5 class="modal-title" id="exampleModalLabel">
-            Your Shopping Cart
-          </h5>
-          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-            <span aria-hidden="true">&times;</span>
-          </button>
-        </div>
-        <div class="modal-body">
-          <table class="table table-image">
-            <thead>
-              <tr>
-                <th scope="col"></th>
-                <th scope="col">Product</th>
-                <th scope="col">Price</th>
-                <th scope="col">Qty</th>
-                <th scope="col">Total</th>
-                <th scope="col">Actions</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr>
-                <td class="w-25">
-                  <img src="../images/images/bmw.jpg"
-                    class="img-fluid img-thumbnail" alt="Sheep">
-                </td>
-                <td>Vans Sk8-Hi MTE Shoes</td>
-                <td>89$</td>
-                <td class="qty"><input type="text" class="form-control" id="input1" value="2"></td>
-                <td>178$</td>
-                <td>
-                  <a href="#" class="btn btn-danger btn-sm">
-                    <i class="fa fa-times"></i>
-                  </a>
-                </td>
-              </tr>
-            </tbody>
-          </table>
-          <div class="d-flex justify-content-end">
-            <h5>Total: <span class="price text-success">89$</span></h5>
-          </div>
-        </div>
-        <div class="modal-footer border-top-0 d-flex justify-content-between">
-          <button type="button" class="btn btn-outline-secondary" data-dismiss="modal">Close</button>
-          <button type="button" class="btn btn-outline-success">Checkout</button>
-        </div>
-      </div>
-    </div>
-  </div>
-  <!-- end of modela cart -->
-  <!-- End of Top Navigation -->
 
   <!-- Start of Slides -->
   <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">

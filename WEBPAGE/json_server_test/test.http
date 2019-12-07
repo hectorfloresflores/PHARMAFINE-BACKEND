@@ -1,7 +1,47 @@
 
 
 ###
-GET http://localhost:3000/users/
+GET http://localhost:3000/
 Content-Type: application/json
-x-auth-user: 9ojSpX6jHu-1
 
+
+###
+POST http://localhost:3002/users
+Content-Type: application/json
+
+{
+    "name":"juan",
+    "lastname":"garcia",
+    "genre":"MAN",
+    "date":"05-12-1996",
+    "email":"juan@gmail.com",
+    "url":"",
+    "password":"1234"
+}
+
+###
+POST http://localhost:3002/login
+Content-Type: application/json
+
+{
+    "email":"carlos@gmail.com",
+    "password":"flores"
+}
+
+//Request user info
+###
+GET http://localhost:3002/users/carlos@gmail.com
+Content-Type: application/json
+x-auth: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImNhcmxvc0BnbWFpbC5jb20iLCJpYXQiOjE1NzUzODQ1MjIsImV4cCI6MTU3NTM4NDUzMn0.MTE8Sah5ISdRHtotiYmLx1kZJTV_Mic48uGwF3OGUIY
+
+###
+GET http://localhost:3002/checkout
+Content-Type: application/json
+x-auth: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImNhcmxvc0BnbWFpbC5jb20iLCJpYXQiOjE1NzU0OTk0NzgsImV4cCI6MTU3NTUwMzA3OH0.FnHWc1-KMcgM7omnCSjW1EqBq_JdlA9segR-jBCZCxk
+email: carlos@gmail.com
+
+
+###
+GET http://localhost:3002/users/fernanda@gmail.com
+Content-Type: application/json
+x-auth: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImZlcm5hbmRhQGdtYWlsLmNvbSIsImlhdCI6MTU3NTM5MzkxOSwiZXhwIjoxNTc1Mzk3NTE5fQ.AL-kckugkrNcX1eFEvn_l9z7EEcicZmH8TKCpLrXRs4

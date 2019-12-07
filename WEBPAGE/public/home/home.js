@@ -1,35 +1,9 @@
 "use strict";
 
 
-window.onload = function() {
-    let xhr = new XMLHttpRequest();
-    xhr.open('GET', "http://localhost:3000/users/")
-    xhr.setRequestHeader("Content-Type", "application/json");   
-    xhr.send()
-    xhr.onload  = function () {
-        switch (xhr.status) {
-            case 403:
-                
-                console.log(xhr.responseText);
-                break;
-            case 200:
-                
-                users = JSON.parse(xhr.responseText) 
-                console.log(xhr.responseText);
-                break;
-        
-            default:
-                   
-                console.log(`${xhr.status} : ${xhr.statusText}`)
-                break;
-        }
-       
-
-    }
-  };
 
 /*Load Users */
-let users
+
    
 
 /*DOM Linkers */
@@ -38,6 +12,15 @@ let emailPassword = document.querySelector("[id=ph_sign_in_password]")
 let emailLabel = document.querySelector("[id=ph_sign_in_email]")
 let insertSignInError = document.getElementById("ph_sign_in_error")
 let registerAccount = document.getElementById("ph_account_create")
+let checkout = document.getElementById("ph_checkout")
+
+
+window.onload = function() {
+    if (sessionStorage.getItem("tokenUser")) {
+        checkout.removeAttribute("hidden")
+    }
+    
+};
 
 signIn.addEventListener("click",function (event) {
     checkUser({
@@ -47,8 +30,11 @@ signIn.addEventListener("click",function (event) {
 })
 
 registerAccount.addEventListener("submit",function (event) {
-    event.preventDefault()
-    alert("he")
+    window.location.href = '../checkout/index.html'
+})
+
+checkout.addEventListener("click",(event)=>{
+    window.location.href = '../checkout/index.html'
 })
 
 
@@ -57,19 +43,33 @@ registerAccount.addEventListener("submit",function (event) {
 /*Javascript functions BackEnd*/
 
 function checkUser(user) {
-    var user
-    if (users != undefined) {
-        user = users.find(element => {
-        if(element.email == user.email && element.password == user.password){
-            
-            return element
-        }    
-        });
-        if(user == undefined){
-            insertSignInError.removeAttribute("hidden")
-        }else{
-            window.location.href = 'page/index.html'
+    let response
+    let xhr = new XMLHttpRequest();
+    xhr.open('POST', "http://localhost:3002/login")
+    xhr.setRequestHeader("Content-Type", "application/json");   
+    xhr.send(JSON.stringify(user))
+    xhr.onload  = function () {
+        switch (xhr.status) {
+            case 400:
+                
+                console.log(xhr.responseText);
+                insertSignInError.removeAttribute("hidden")
+                break;
+            case 200:
+                
+                response = JSON.parse(xhr.responseText) 
+                sessionStorage.setItem("tokenUser",response.token)
+                sessionStorage.setItem("userEmail",emailLabel.value)
+                window.location.href = '../../page/index.html'
+                break;
+        
+            default:
+                   
+                console.log(`${xhr.status} : ${xhr.statusText}`)
+                break;
         }
+       
+
     }
 
 }
