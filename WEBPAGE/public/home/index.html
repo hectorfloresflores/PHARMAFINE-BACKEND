@@ -70,7 +70,7 @@
             alt="" />
           <span class="align-text-top carrito" >Carrito</span>
         </i>
-        <i data-toggle="modal" data-target="#exampleModalCenter" style="font-style: normal">
+        <i data-toggle="modal" data-target="#ph_signin_modal" style="font-style: normal">
           <input type="image" class="account align-middle" src="../images/icons/account.png" width="25" height=""
             alt="" />
           <span class="align-text-top cuenta">Cuenta</span>
@@ -104,7 +104,7 @@
   </nav>
 
   <!-- Modal Sign up-->
-  <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle"
+  <div class="modal fade" id="ph_signin_modal" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle"
     aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered" role="document">
       <div class="modal-content">
@@ -157,75 +157,49 @@
             <span aria-hidden="true">&times;</span>
           </button>
         </div>
-        <form action="" method=post
-          oninput='up2.setCustomValidity(up2.value != up.value ? "Passwords do not match." : "")'>
+       
           <div class="modal-body">
 
             <div class="row justify-content-center">
               <div class="form-group col-md-6">
 
-                <input type="text" class="form-control" placeholder="Nombre" required />
+                <input id="ph_register_name" type="text" class="form-control" placeholder="Nombre" required />
               </div>
               <div class="form-group col-md-6">
-                <input type="text" class="form-control" placeholder="Apellido" required />
+                <input id="ph_register_lastname" type="text" class="form-control" placeholder="Apellido" required />
               </div>
 
             </div>
             <div class="form-group">
-              <input type="email" class="form-control" placeholder="correo" required />
+              <input id="ph_register_email" type="email" class="form-control" placeholder="correo" required />
             </div>
             <div class="form-group">
-              <input type="password" class="form-control" id="password1" placeholder="Contraseña" required name=up />
+              <input id="ph_register_password1" type="password" class="form-control" placeholder="Contraseña" required name=up />
             </div>
             <div class="form-group">
-              <input type="password" class="form-control" id="password2" placeholder="Confirmar Contraseña" name=up2 />
+              <input id="ph_register_password2" type="password" class="form-control"  placeholder="Confirmar Contraseña" required name=up2 />
             </div>
             <div class="form-group ">
-              <label class="checkbox-inline"><input type="checkbox" required> Acepto los <a href="#">términos
+              <label id="ph_register_label" class="checkbox-inline"><input type="checkbox" required> Acepto los <a href="#">términos
                   de uso</a> y el <a href="#"> aviso de privacidad</a></label>
             </div>
+            <div id="ph_register_alert">
             
+            </div>
            
           </div>
           <div class="modal-footer">
 
-            <button id="ph_account_create" class="btn btn-outline-success" 
-              type="submit" >Crear Cuenta</a>
+            <button id="ph_account_create" class="btn btn-outline-success" disabled
+              type="button" >Crear Cuenta</a>
           </div>
 
-        </form>
+        
       </div>
     </div>
   </div>
 
   <!-- end of modal register -->
-
-  <!-- Modal Sent Mail-->
-  <div class="modal fade" id="ph-register-alert" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle"
-    aria-hidden="true">
-    <div class="modal-dialog modal-dialog-centered" role="document">
-      <div class="modal-content">
-        <div class="modal-header">
-          <h5 class="modal-title" id="exampleModalLongTitle">Iniciar Sesión</h5>
-          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-            <span aria-hidden="true">&times;</span>
-          </button>
-
-        </div>
-        <div class="modal-body">
-          <div class="alert alert-success alert-dismissible fade show">
-            <strong>¡Listo!</strong> Hemos enviado un link de verificación a tu correo.
-            Verificalo para poder iniciar sesión a tu cuenta
-
-          </div>
-        </div>
-
-      </div>
-    </div>
-  </div>
-  <!-- end of modal sent mail -->
-
-
 
   <!-- Start of Slides -->
   <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
@@ -236,7 +210,7 @@
     </ol>
     <div class="carousel-inner">
       <div class="carousel-item active">
-        <img class="d-block w-100" src="../images/images/bmw.jpg" alt="First slide" />
+        <img class="d-block w-100" src="../images/images/alvaro.jpg" alt="First slide" />
       </div>
       <div class="carousel-item">
         <img class="d-block w-100" src="../images/images/medicine1.jpg" alt="Second slide" />
@@ -272,6 +246,29 @@
       </div>
 
    
+  <!-- Modal Sent Mail-->
+  <div class="modal fade" id="ph_modal_email" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle"
+    aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" >Solicitar Información</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+
+        </div>
+        <div class="modal-body">
+          <div id="ph_email_warning">
+            
+
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+  <!-- end of modal sent mail -->
   
 <!--  -->
   <div class="footer">
@@ -291,16 +288,16 @@
           <form>
             <div class="form-group">
               <label for="exampleInputEmail1">Correo</label>
-              <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp"
-                placeholder="example@gmail.com" />
+              <input type="email" class="form-control" id="ph_user_email" aria-describedby="emailHelp"
+                placeholder="tucorreo@gmail.com" />
               <small id="emailHelp" class="form-text">Nunca compartiremos tu email con alguien más</small>
             </div>
             <div class="form-group">
               <label for="exampleFormControlTextarea1">Comentarios</label>
-              <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"
+              <textarea class="form-control" id="ph_user_message" rows="3"
                 placeholder="Hola me gustaría saber..."></textarea>
             </div>
-            <button type="submit" class="btn btn-outline-light">Enviar</button>
+            <button id="ph_button_email" data-toggle="modal" data-target="#ph_modal_email" type="button" class="btn btn-outline-light" disabled>Enviar</button>
           </form>
         </div>
         <div class="col">
@@ -319,10 +316,10 @@
   <div style="height: 50px; background-color:black;color:white;" class="row justify-content-center align-self-center ">
       <div class="row" style="padding-top: 10px;">
           <div class="col " style="display: inline-block;text-align: center;">
-            <a class="fa fa-twitter fa-lg mx-5 footer-links" href=""></a>
-            <a class="fa fa-linkedin fa-lg mx-5 footer-links" href=""></a>
-            <a class="fa fa-facebook-square fa-lg mx-5 footer-links" href=""></a>
-            <a class="fa fa-instagram fa-lg mx-5 footer-links" href=""></a>
+            <a class="fa fa-twitter fa-lg mx-5 footer-links" href="https://twitter.com/pharmafine"></a>
+            <a class="fa fa-linkedin fa-lg mx-5 footer-links" href="https://www.linkedin.com/company/pharmafine"></a>
+            <a class="fa fa-facebook-square fa-lg mx-5 footer-links" href="https://www.facebook.com/pharmafine/"></a>
+            <a class="fa fa-instagram fa-lg mx-5 footer-links" href="https://www.instagram.com/pharmafine/"></a>
           </div>
         </div>
   </div>

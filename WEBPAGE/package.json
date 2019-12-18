@@ -11,10 +11,13 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "@sendgrid/mail": "^6.4.0",
     "bcrypt": "^3.0.7",
     "cors": "^2.8.5",
     "express": "^4.17.1",
+    "googleapis": "^39.2.0",
     "jsonwebtoken": "^8.5.1",
-    "mongoose": "^5.7.13"
+    "mongoose": "^5.7.13",
+    "sendmail": "^1.6.1"
   }
 }

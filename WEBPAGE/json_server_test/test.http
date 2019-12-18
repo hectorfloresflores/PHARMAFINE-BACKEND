@@ -10,12 +10,12 @@ POST http://localhost:3002/users
 Content-Type: application/json
 
 {
-    "name":"juan",
+    "name":"",
     "lastname":"garcia",
     "genre":"MAN",
     "date":"05-12-1996",
-    "email":"juan@gmail.com",
     "url":"",
+    "email":"ellass@gmail.com",
     "password":"1234"
 }
 
@@ -45,3 +45,12 @@ email: carlos@gmail.com
 GET http://localhost:3002/users/fernanda@gmail.com
 Content-Type: application/json
 x-auth: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImZlcm5hbmRhQGdtYWlsLmNvbSIsImlhdCI6MTU3NTM5MzkxOSwiZXhwIjoxNTc1Mzk3NTE5fQ.AL-kckugkrNcX1eFEvn_l9z7EEcicZmH8TKCpLrXRs4
+
+###
+POST http://localhost:3002/email
+Content-Type: application/json
+
+{
+    "email":"carlos@gmail.com",
+    "message":"Hola como estas"
+}

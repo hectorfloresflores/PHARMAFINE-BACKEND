@@ -19,6 +19,7 @@ app.use(express.json())
 app.use(cors())
 app.use('/',require('./routes/users'));
 app.use('/',require('./routes/checkout'));
+app.use('/',require('./routes/email'));
 app.use(express.static(__dirname +"/public"))
 /***********/
 
@@ -78,3 +79,4 @@ app.get('/us', async (req,res)=>{
 //     })
 
 app.listen(port, ()=> console.log(`http://localhost:${port}`))
+

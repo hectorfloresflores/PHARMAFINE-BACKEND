@@ -37,6 +37,10 @@ let usersSchema = mongoose.Schema({
     role: {
         type: String,
         enum: ["ADMIN", "USER", "GUEST"]
+    },
+    isVerified: {
+        type:Boolean,
+        default:false
     }
 })
 
@@ -59,7 +63,7 @@ async function createUser(user) {
         console.log("User Created");
         return true
     } catch (error) {
-        console.log("Error user not created")
+        console.log(error)
         return false
     }
 
