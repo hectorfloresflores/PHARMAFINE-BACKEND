@@ -1,0 +1,15 @@
+
+
+.project{
+    opacity: 0;
+   
+}
+
+.project.fade-in{
+    opacity: 1;
+}
+
+.container{
+    position: relative;
+    background-color: blue;
+}

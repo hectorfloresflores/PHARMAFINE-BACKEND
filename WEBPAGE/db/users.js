@@ -99,7 +99,7 @@ async function findUsersBy(parameter, id) {
 }
 
 
-
+/*To do: */
 async function getUserCheckout(email){
     
         await User.find({"email":email},function (err,res) {

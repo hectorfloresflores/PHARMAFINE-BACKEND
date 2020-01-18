@@ -4,7 +4,7 @@
 
 window.onload = function() {
     
-    var products = getProducts()
+    // var products = getProducts()
    
 };
 

@@ -20,6 +20,7 @@ app.use(cors())
 app.use('/',require('./routes/users'));
 app.use('/',require('./routes/checkout'));
 app.use('/',require('./routes/email'));
+app.use('/',require('./routes/openpay'));
 app.use(express.static(__dirname +"/public"))
 /***********/
 
@@ -32,7 +33,7 @@ function myMiddleware(req,res, next){
 
 
 
-app.get('/', myMiddleware, (req,res)=>{
+app.get('/home', myMiddleware, (req,res)=>{
     res.send('Hello !')
 })
 

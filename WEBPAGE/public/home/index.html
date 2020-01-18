@@ -2,6 +2,7 @@
 <html lang="en">
 
 <head>
+  
   <title>Pharmafine Oficial</title>
   <!-- Required meta tags -->
   <meta charset="utf-8" />
@@ -9,14 +10,13 @@
 
   <!-- Favicon  -->
   <link rel="icon" href="../images/core/pharma-logo.png" />
-
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+  
   <!-- Style CSS -->
-  <link rel="stylesheet" href="style.css" />
+  
   <!-- Optional JavaScript -->
   <!-- jQuery first, then Popper.js, then Bootstrap JS -->
-  <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
-    integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous">
-  </script>
+  
   <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
     integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous">
   </script>
@@ -30,194 +30,37 @@
     integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous" />
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" />
 
+  
+  
 </head>
 
 <body>
-  <!-- Start of navigation -->
-  <nav class="navbar navbar-expand  fixed-top nav-pharma">
-    <!-- Logo centered -->
-    <nav class="navbar navbar-brand navbar-collapse justify-content-center">
-      <div style="position: absolute;left: 0;">
-        <div id="mySidenav" class="sidenav">
-          <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">x</a>
-          <a href="#">About</a>
-          <a href="#">Services</a>
-          <a href="#">Clients</a>
-          <a href="#">Contact</a>
-        </div>
-
-        <span class="burger-menu" onclick="openNav()">
-          <img src="../images/icons/menu.png" width="25" height="" alt="" />
-        </span>
-
-        <script>
-          function openNav() {
-            document.getElementById("mySidenav").style.width = "250px";
-          }
-
-          function closeNav() {
-            document.getElementById("mySidenav").style.width = "0";
-          }
-        </script>
-      </div>
-
-      <a class="navbar-brand">
-        <img src="../images/core/pharma-logo.png" width="100" height="" alt="" />
-      </a>
-      <div style="position: absolute;right:0;" class="leftNav">
-        <i id="ph_checkout" hidden style="font-style: normal">
-          <input type="image" class="bag align-middle" src="../images/icons/shopping-bag.png" width="25" height=""
-            alt="" />
-          <span class="align-text-top carrito" >Carrito</span>
-        </i>
-        <i data-toggle="modal" data-target="#ph_signin_modal" style="font-style: normal">
-          <input type="image" class="account align-middle" src="../images/icons/account.png" width="25" height=""
-            alt="" />
-          <span class="align-text-top cuenta">Cuenta</span>
-        </i>
-      </div>
-    </nav>
-
+  <div id="ph_menu">
     <script>
-      $(document).ready(function () {
-        $(window).scroll(function () {
-          if ($(window).scrollTop() > 800) {
-            $(".nav-pharma").css("background", "rgba(0, 0, 0, 0.6)");
-          } else {
-            $(".nav-pharma").css("background", "none");
-          }
-        });
 
-        $(window).on("resize", function () {
-          var win = $(this); //this = window
+    $("#ph_menu").load("../menu.html");
 
-          if (win.width() < 800) {
-            $(".carrito").css("display", "none");
-            $(".cuenta").css("display", "none");
-          } else {
-            $(".carrito").css("display", "inline");
-            $(".cuenta").css("display", "inline");
-          }
-        });
-      });
-    </script>
-  </nav>
-
-  <!-- Modal Sign up-->
-  <div class="modal fade" id="ph_signin_modal" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle"
-    aria-hidden="true">
-    <div class="modal-dialog modal-dialog-centered" role="document">
-      <div class="modal-content">
-        <div class="modal-header">
-          <h5 class="modal-title" id="exampleModalLongTitle">Iniciar Sesión</h5>
-          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-            <span aria-hidden="true">&times;</span>
-          </button>
-        </div>
-        <div class="modal-body">
-          <form id="ph_sign_in_form">
-            <div class="form-group">
-              <label for="exampleInputEmail">Correo ó Usuario</label>
-              <input type="email" class="form-control" id="ph_sign_in_email" placeholder="Introduce tu correo" />
-
-            </div>
-            <div class="form-group">Contraseña
-              <label for="ph_sign_in_password">Contraseña</label>
-              <input type="password" class="form-control" id="ph_sign_in_password"
-                placeholder="Introduce tu contraseña" />
-            </div>
-            <button type="button"  id="ph_sign_in" class="btn btn-outline-secondary">Ingresar</button>
-            <p></p>
-            <div id="ph_sign_in_error" class="alert alert-warning alert-dismissible fade show" hidden>
-              <strong>Error de auntenticación</strong> Revisa usuario o contraseña
+      </script>
+  </div>
   
-            </div>
-          </form>
-        </div>
-        <div class="modal-footer">
-
-
-          <a href="#ph-modal-register"  data-toggle="modal" class="btn btn-outline-success" data-dismiss="modal"
-            role="button">Register</a>
-
-        </div>
-      </div>
-    </div>
-  </div>
-  <!-- end of modal sign up -->
-
-  <!-- Modal Register-->
-  <div class="modal fade " id="ph-modal-register" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle"
-    aria-hidden="true">
-    <div class="modal-dialog modal-dialog-centered" role="document">
-      <div class="modal-content">
-        <div class="modal-header">
-          <h5 class="modal-title" id="exampleModalLongTitle">Registro con datos</h5>
-          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-            <span aria-hidden="true">&times;</span>
-          </button>
-        </div>
-       
-          <div class="modal-body">
-
-            <div class="row justify-content-center">
-              <div class="form-group col-md-6">
-
-                <input id="ph_register_name" type="text" class="form-control" placeholder="Nombre" required />
-              </div>
-              <div class="form-group col-md-6">
-                <input id="ph_register_lastname" type="text" class="form-control" placeholder="Apellido" required />
-              </div>
-
-            </div>
-            <div class="form-group">
-              <input id="ph_register_email" type="email" class="form-control" placeholder="correo" required />
-            </div>
-            <div class="form-group">
-              <input id="ph_register_password1" type="password" class="form-control" placeholder="Contraseña" required name=up />
-            </div>
-            <div class="form-group">
-              <input id="ph_register_password2" type="password" class="form-control"  placeholder="Confirmar Contraseña" required name=up2 />
-            </div>
-            <div class="form-group ">
-              <label id="ph_register_label" class="checkbox-inline"><input type="checkbox" required> Acepto los <a href="#">términos
-                  de uso</a> y el <a href="#"> aviso de privacidad</a></label>
-            </div>
-            <div id="ph_register_alert">
-            
-            </div>
-           
-          </div>
-          <div class="modal-footer">
-
-            <button id="ph_account_create" class="btn btn-outline-success" disabled
-              type="button" >Crear Cuenta</a>
-          </div>
-
-        
-      </div>
-    </div>
-  </div>
-
-  <!-- end of modal register -->
 
   <!-- Start of Slides -->
   <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
     <ol class="carousel-indicators">
       <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
-      <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
-      <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
+      <!-- <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
+      <li data-target="#carouselExampleIndicators" data-slide-to="2"></li> -->
     </ol>
     <div class="carousel-inner">
       <div class="carousel-item active">
         <img class="d-block w-100" src="../images/images/alvaro.jpg" alt="First slide" />
       </div>
-      <div class="carousel-item">
+      <!-- <div class="carousel-item">
         <img class="d-block w-100" src="../images/images/medicine1.jpg" alt="Second slide" />
       </div>
       <div class="carousel-item">
         <img class="d-block w-100" src="../images/images/medicine.jpg" alt="Third slide" />
-      </div>
+      </div> -->
     </div>
     <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
       <span class="carousel-control-prev-icon" aria-hidden="true"></span>
@@ -230,19 +73,9 @@
   </div>
   <!-- End of slides -->
  
-  <div style="height: 300px; background-color:#CDCDC3;color:#CEA673;" class="row justify-content-center align-self-center ">
-       <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Minus, molestias! Deserunt labore eum nostrum quas officiis eveniet necessitatibus quam quia, vitae tempora dolorem est illum voluptates voluptatem! Aut repellat sunt, suscipit ipsam consectetur provident assumenda reprehenderit id quibusdam. Optio delectus ut, itaque excepturi consectetur rerum minima, sequi assumenda aliquam ea, temporibus quam dignissimos doloremque repudiandae eos a id tempore facilis repellat. Doloribus deserunt dolor laborum aperiam nesciunt fuga ea voluptatum modi sint molestiae, expedita, natus odio minima possimus vero dolore? Tempora quo eaque ad incidunt animi sequi repudiandae sunt soluta quis? Itaque magni vel illo omnis commodi consequuntur eos dolorem, vitae quibusdam explicabo, voluptatibus aperiam! Earum tempore architecto quia laboriosam nulla? Libero quam adipisci exercitationem consequuntur omnis, autem praesentium corrupti obcaecati animi provident doloremque expedita accusantium voluptates. Fuga harum recusandae sapiente autem perferendis accusantium iste ipsam ipsa maiores expedita est voluptates neque, blanditiis quisquam delectus? Dolorem doloremque rem dolor architecto magni porro? Quas, quaerat eum! Autem, voluptate tenetur! Fugiat libero, necessitatibus ut earum officiis eaque alias iste, nisi dignissimos illo, pariatur deserunt. Velit beatae aut necessitatibus fugiat, repellat consectetur voluptate exercitationem, voluptatum alias reprehenderit molestiae neque possimus nemo ex? Incidunt at nesciunt dolor! Minus reiciendis quia alias, voluptatibus explicabo iure nesciunt aperiam itaque harum excepturi iusto ab quod expedita optio. Rerum inventore earum nam odio debitis suscipit saepe laudantium nostrum? Voluptatum, neque molestias. Fugit soluta sed esse repellendus quam architecto nemo sit impedit deleniti exercitationem eaque commodi, neque nesciunt. Ducimus, ea ex, odit eligendi itaque repudiandae sit dolor accusantium omnis expedita repellat et id? Unde voluptates magni, et quae possimus architecto perspiciatis ratione placeat optio temporibus quos ipsa, at rem sint. Exercitationem provident ut maxime hic iure ipsam quisquam, reprehenderit vero repellat soluta adipisci error numquam corrupti illum amet obcaecati rerum facere aperiam magni incidunt. Quo delectus quaerat beatae laborum?</p>
-    </div>
-  <div style="height: 300px; background-color:black;color:#CEA673;" class="row justify-content-center align-self-center ">
-      <blockquote class="blockquote">
-          <p class="mb-0">La salud no lo es todo pero sin ella, todo lo demás es nada.</p>
-          <footer class="blockquote-footer">A. Schopenhauer.</footer>
-          <button type="button" class="btn btn-outline-light">Checkout</button>
-
-        </blockquote>
-    </div>
-    <div style="height: 300px; background-color:#CDCDC3;color:#CEA673;" class="row justify-content-center align-self-center ">
-       
+  
+    <div class="row justify-content-center align-self-center" id="principal">
+      <img class="" src="../images/images/wave.png" alt="">
       </div>
 
    
@@ -273,28 +106,24 @@
 <!--  -->
   <div class="footer">
     <div class="container">
-      <div class="row py-4">
-        <div class="col " style="display: inline-block;text-align: center;">
-          <a class="mx-5" style="color: white;" href="">Nosotros</a>
-          <a class="mx-5" style="color: white;" href="">Conócenos</a>
-        </div>
-      </div>
+      
 
       <div class="row pb-5">
-        <hr size="10" style=" border-width: 4px;background-color: white;" />
-        <div class="col">
-          
+        
+        
+        <div class="col" >
+          <a class="mx-5" style="color: white; " href="">Contáctanos</a>
           <hr style=" border-width: 1px;background-color: white;" />
           <form>
             <div class="form-group">
               <label for="exampleInputEmail1">Correo</label>
-              <input type="email" class="form-control" id="ph_user_email" aria-describedby="emailHelp"
+              <input type="email" class="form-control" id="ph_user_email" aria-describedby="emailHelp" required onkeyup="myFunction()"
                 placeholder="tucorreo@gmail.com" />
               <small id="emailHelp" class="form-text">Nunca compartiremos tu email con alguien más</small>
             </div>
             <div class="form-group">
               <label for="exampleFormControlTextarea1">Comentarios</label>
-              <textarea class="form-control" id="ph_user_message" rows="3"
+              <textarea class="form-control" id="ph_user_message" rows="3" required onkeyup="myFunction()"
                 placeholder="Hola me gustaría saber..."></textarea>
             </div>
             <button id="ph_button_email" data-toggle="modal" data-target="#ph_modal_email" type="button" class="btn btn-outline-light" disabled>Enviar</button>
@@ -327,7 +156,11 @@
   <!-- START FOOTER DARK-->
 
 
+  <!-- css files -->
+  <link rel="stylesheet" href="style.css" />
+  <link rel="stylesheet" href="../menu.css" />
   <!-- Javascript Links -->
+  <script src="../menu.js"></script>
   <script type="text/javascript" src="home.js"></script>
 </body>
 

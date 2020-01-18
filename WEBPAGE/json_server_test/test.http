@@ -1,7 +1,7 @@
 
 
 ###
-GET http://localhost:3000/
+GET http://localhost:3002/home
 Content-Type: application/json
 
 
@@ -10,13 +10,13 @@ POST http://localhost:3002/users
 Content-Type: application/json
 
 {
-    "name":"",
-    "lastname":"garcia",
+    "name":"carlos",
+    "lastname":"",
     "genre":"MAN",
-    "date":"05-12-1996",
+    "date":"",
     "url":"",
-    "email":"ellass@gmail.com",
-    "password":"1234"
+    "email":"",
+    "password":""
 }
 
 ###
@@ -32,7 +32,7 @@ Content-Type: application/json
 ###
 GET http://localhost:3002/users/carlos@gmail.com
 Content-Type: application/json
-x-auth: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImNhcmxvc0BnbWFpbC5jb20iLCJpYXQiOjE1NzUzODQ1MjIsImV4cCI6MTU3NTM4NDUzMn0.MTE8Sah5ISdRHtotiYmLx1kZJTV_Mic48uGwF3OGUIY
+x-auth: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImNhcmxvc0BnbWFpbC5jb20iLCJpYXQiOjE1NzcwNTEzMDAsImV4cCI6MTU3NzA1NDkwMH0.iNWgrbfVu1qRxygS871HGlmFNLOGcH5TpyH0qBW-n00
 
 ###
 GET http://localhost:3002/checkout
@@ -51,6 +51,10 @@ POST http://localhost:3002/email
 Content-Type: application/json
 
 {
-    "email":"carlos@gmail.com",
+    "email":"carlos.flogars@gmail.com",
     "message":"Hola como estas"
 }
+
+###
+GET http://localhost:3002/pay
+Content-Type: application/json

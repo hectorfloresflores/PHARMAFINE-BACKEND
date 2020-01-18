@@ -25,7 +25,7 @@ router.route('/users')
         let params = ["name", "lastname", "email", "password"]
         var params_missed = []
         for (const key in params) {
-            if (user[params[key]] == undefined) {
+            if (user[params[key]] == undefined || user[params[key]] == "") {
                 params_missed.push(params[key])
             }
         }
@@ -66,11 +66,11 @@ router.route('/login')
 
         existUser("email", req.body.email).then(result => {
             if (result == false) {
-                res.status(400).send("User not found")
+                res.status(400).send("User not found or Bad password")
                 return
             }
             if (isPassword(req.body.password, result.password) == false) {
-                res.status(400).send("Bad password")
+                res.status(400).send("User not found or Bad password")
                 return
             }
 
@@ -90,10 +90,8 @@ router.route('/login')
 
 router.route('/users/:email')
     .get(tokenValidation, (req, res) => {
-        existUser("email", req.params.email).then(result => {
-            console.log(result);
-        })
-        res.status(200).send("ok")
+       
+        res.status(200).send(req.user)
     })
 
 

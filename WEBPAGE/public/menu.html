@@ -1,0 +1,80 @@
+<!-- Start of navigation -->
+<nav class="navbar navbar-expand  fixed-top nav-pharma">
+    <!-- Logo centered -->
+    <nav class="navbar navbar-brand navbar-collapse justify-content-center">
+      <div style="position: absolute;left: 0;">
+        <div id="mySidenav" class="sidenav">
+          <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">x</a>
+          <a href="#">About</a>
+          <a href="#">Services</a>
+          <a href="#">Clients</a>
+          <a href="#">Contact</a>
+        </div>
+
+        <span class="burger-menu" onclick="openNav()">
+          <img src="../images/icons/menu.png" width="25" height="" alt="" />
+        </span>
+
+        <script>
+          function openNav() {
+            document.getElementById("mySidenav").style.width = "250px";
+          }
+
+          function closeNav() {
+            document.getElementById("mySidenav").style.width = "0";
+          }
+        </script>
+      </div>
+
+      <a class="navbar-brand" id="ph_home">
+        <img src="../images/core/pharma-logo.png" id="ph_home" width="100" height="" alt="" />
+      </a>
+      <div style="position: absolute;right:0;" class="leftNav">
+        <i id="ph_checkout"  style="font-style: normal">
+          <input type="image"id="bolsa" class="bag align-middle" src="../images/icons/shopping-bag.png" width="25" height=""
+            alt="" />
+          <span class="align-text-top carrito" id="bolsa">Mi bolsa</span>
+        </i>
+        <i data-toggle="modal" data-target="#ph_signin_modal" style="font-style: normal">
+          <input type="image" id="cuenta" class="account align-middle" src="../images/icons/account.png" width="25" height=""
+            alt="" />
+          <span class="align-text-top cuenta" id="cuenta"></span>
+        </i>
+      </div>
+    </nav>
+
+    <script>
+      $(document).ready(function () {
+        $(window).scroll(function () {
+          if ($(window).scrollTop() > 1000) {
+            $(".nav-pharma").css("background", "rgba(0, 0, 0, 0.6)");
+          } else {
+            $(".nav-pharma").css("background", "none");
+          }
+        });
+
+        $(window).on("resize", function () {
+          var win = $(this); //this = window
+
+          if (win.width() < 1000) {
+            $(".carrito").css("display", "none");
+            $(".cuenta").css("display", "none");
+          } else {
+            $(".carrito").css("display", "inline");
+            $(".cuenta").css("display", "inline");
+          }
+        });
+      });
+    </script>
+  </nav>
+
+  <!-- Modal Account-->
+  <div class="modal fade" id="ph_signin_modal" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle"
+    aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+      <div class="modal-content" id="ph_modal_account">
+       <!-- Will assign html in runtime -->
+      </div>
+    </div>
+  </div>
+  <!-- end of modal sign up -->

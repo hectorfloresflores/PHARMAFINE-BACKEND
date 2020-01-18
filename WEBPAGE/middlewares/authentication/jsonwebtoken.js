@@ -1,5 +1,5 @@
 const jwt = require('jsonwebtoken');
-const expiresIn = 60 * 60 //1 hour
+const expiresIn = 60  //1 hour
 const {
     encryptPassword,
     isPassword
@@ -24,6 +24,8 @@ function tokenValidation(req, res, next) {
             res.status(400).send("User not found")
             return
         }
+
+        req.user = result
        
         jwt.verify(req.header("x-auth"), result.password, (err, decoded) => {
             if (err) {
