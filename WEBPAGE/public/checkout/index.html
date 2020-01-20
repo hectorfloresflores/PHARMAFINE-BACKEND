@@ -8,6 +8,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <!-- Style CSS -->
   <link rel="stylesheet" href="style.css" />
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
         integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
@@ -15,10 +16,19 @@
 </head>
 
 <body>
+
+  <div id="ph_menu">
+    <script>
+
+    $("#ph_menu").load("../menu.html");
+
+      </script>
+  </div>
+
     <div class="pb-5">
-        <div class="container" style="margin-top: 00px;">
+        <div class="container" >
           <div class="row">
-            <div class="col-lg-12 p-5 bg-white rounded shadow-sm mb-5">
+            <div class="col-lg-12 p-5 bg-white rounded shadow-sm mb-5" style="margin-top: 120px;">
     
               <!-- Shopping cart table -->
               <div class="table-responsive">
@@ -40,7 +50,7 @@
                     </tr>
                   </thead>
                   <tbody>
-                    <tr>
+                    <!-- <tr>
                       <th scope="row" class="border-0">
                         <div class="p-2">
                           <img src="https://res.cloudinary.com/mhmd/image/upload/v1556670479/product-1_zrifhn.jpg" alt="" width="70" class="img-fluid rounded shadow-sm">
@@ -79,7 +89,7 @@
                         <td class="align-middle"><strong>3</strong></td>
                         <td class="align-middle"><a href="#" class="text-dark"><i class="fa fa-trash"></i></a>
                         </td>
-                    </tr>
+                    </tr> -->
                   </tbody>
                 </table>
               </div>
@@ -136,6 +146,9 @@
         integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous">
     </script>
     <script type="text/javascript" src="checkout.js"></script>
+    <link rel="stylesheet" href="../menu.css" />
+    <!-- Javascript Links -->
+    <script src="../menu.js"></script>
 </body>
 
 </html>

@@ -109,6 +109,45 @@ async function getUserCheckout(email){
 
 }
 
+/*Usage */
+// deleteItemsCheckout("fernanda@gmail.com",["abc","123"])
+async function deleteItemsCheckout(email,productsIDs){
+    let result = await existUser("email",email)
+        if (result != false) {
+            
+            let newCheckout = []
+            result.checkout.forEach(element => {
+                
+                if (productsIDs.includes(element.split("-")[0]) == false) {
+                    newCheckout.push(element)
+                }
+            });
+            try {
+                let updated =  await User.updateOne({"email":email}, {"checkout":newCheckout})
+                
+                    if (updated.nModified != 0) {
+                        console.log("Items Deleted")
+                        return true
+                    }else{
+                        return false;
+                    }
+                
+            } catch (error) {
+                console.log(`Error ON DATABASE`);
+                return false
+            }
+        }else{
+            console.log("User dosent exist")
+        }
+        
+    
+    
+  
+    
+   
+
+}
+
 async function updateUser(paramSearch, paramSet) {
     
      try {
@@ -121,12 +160,12 @@ async function updateUser(paramSearch, paramSet) {
 }
 
  
-//console.log(createUser(newUser))
 
-//  updateUser({
-//     "email":"carlos@gmail.com",
-//     "password":"1234"
-// },{genre:"HOMBRE"}).then(result =>{
+
+
+// deleteItemsCheckout({
+//     "email":"fernana@gmail.com"
+// },{genre:"WOMAN",checkout:["123","456"]}).then(result =>{
 //     console.log(result.nModified)
 //  })
 // User.updateOne({name:"carlos"},{name:"carlitos"})
@@ -145,5 +184,6 @@ module.exports = {
     findUsersBy,
     updateUser,
     existUser,
-    createUser
+    createUser,
+    deleteItemsCheckout
 };

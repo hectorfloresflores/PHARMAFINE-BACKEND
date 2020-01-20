@@ -47,14 +47,23 @@ Content-Type: application/json
 x-auth: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImZlcm5hbmRhQGdtYWlsLmNvbSIsImlhdCI6MTU3NTM5MzkxOSwiZXhwIjoxNTc1Mzk3NTE5fQ.AL-kckugkrNcX1eFEvn_l9z7EEcicZmH8TKCpLrXRs4
 
 ###
-POST http://localhost:3002/email
+GET http://localhost:3002/users
 Content-Type: application/json
+email: carlos@gmail.com
+x-auth: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImZlcm5hbmRhQGdtYWlsLmNvbSIsImlhdCI6MTU3NTM5MzkxOSwiZXhwIjoxNTc1Mzk3NTE5fQ.AL-kckugkrNcX1eFEvn_l9z7EEcicZmH8TKCpLrXRs4
 
-{
-    "email":"carlos.flogars@gmail.com",
-    "message":"Hola como estas"
-}
 
 ###
 GET http://localhost:3002/pay
 Content-Type: application/json
+
+
+###
+DELETE http://localhost:3002/checkout
+Content-Type: application/json
+email: fernanda@gmail.com
+x-auth: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImZlcm5hbmRhQGdtYWlsLmNvbSIsImlhdCI6MTU3NTM5MzkxOSwiZXhwIjoxNTc1Mzk3NTE5fQ.AL-kckugkrNcX1eFEvn_l9z7EEcicZmH8TKCpLrXRs4
+
+{
+    "products":["abc"]
+}

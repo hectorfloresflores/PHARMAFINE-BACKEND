@@ -88,7 +88,7 @@ router.route('/login')
 
     })
 
-router.route('/users/:email')
+router.route('/users')
     .get(tokenValidation, (req, res) => {
        
         res.status(200).send(req.user)

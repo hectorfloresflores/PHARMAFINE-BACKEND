@@ -30,7 +30,21 @@
     integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous" />
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" />
 
-  
+  <style>
+    * {
+        margin: 0;
+        padding: 0;
+    }
+    .imgbox {
+        display: grid;
+        height: 100%;
+    }
+    .center-fit {
+        max-width: 100%;
+        max-height: 100vh;
+        margin: auto;
+    }
+</style>
   
 </head>
 
@@ -74,10 +88,13 @@
   <!-- End of slides -->
  
   
-    <div class="row justify-content-center align-self-center" id="principal">
+    <!-- <div class="row justify-content-center align-self-center" id="principal">
       <img class="" src="../images/images/wave.png" alt="">
-      </div>
+      </div> -->
 
+      <div class="imgbox" id="principal">
+        <img class="center-fit" src='../images/images/wave.png'>
+    </div>
    
   <!-- Modal Sent Mail-->
   <div class="modal fade" id="ph_modal_email" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle"

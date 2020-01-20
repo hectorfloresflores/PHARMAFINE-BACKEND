@@ -30,8 +30,9 @@ window.addEventListener("load", function() {
     return;
   }
   let xhr = new XMLHttpRequest();
-  xhr.open("GET", `${serverLink}/users/${sessionStorage.getItem("userEmail")}`);
+  xhr.open("GET", `${serverLink}/users`);
   xhr.setRequestHeader("Content-Type", "application/json");
+  xhr.setRequestHeader("email", `${sessionStorage.getItem("userEmail")}`);
   xhr.setRequestHeader("x-auth", sessionStorage.getItem("tokenUser"));
   xhr.send();
   xhr.onload = function() {
@@ -41,6 +42,7 @@ window.addEventListener("load", function() {
         console.log(xhr.status);
         break;
       default:
+        
         document.querySelector(".cuenta").innerText = `Iniciar sesión`;
         break;
     }
@@ -273,10 +275,13 @@ document.addEventListener("click", function(event) {
         sessionStorage.getItem("tokenUser") == null
       ) {
         document.getElementById("ph_modal_account").innerHTML = defaultSignin;
+        
         return;
       }
       
-      xhr.open("GET", `${serverLink}/users/${sessionStorage.getItem("userEmail")}`);
+      xhr.open("GET", `${serverLink}/users`);
+      
+      xhr.setRequestHeader("email", `${sessionStorage.getItem("userEmail")}`);
       xhr.setRequestHeader("Content-Type", "application/json");
       xhr.setRequestHeader("x-auth", sessionStorage.getItem("tokenUser"));
       xhr.send();
@@ -326,6 +331,7 @@ document.addEventListener("click", function(event) {
     
           default:
             document.getElementById("ph_modal_account").innerHTML = defaultSignin;
+            
             break;
         }
       };
@@ -334,7 +340,7 @@ document.addEventListener("click", function(event) {
           window.location.href = "../checkout/index.html";
         break;
         case 'ph_home':
-          document.location.href="/home";
+          document.location.href="../home";
           break;
     default:
       break;

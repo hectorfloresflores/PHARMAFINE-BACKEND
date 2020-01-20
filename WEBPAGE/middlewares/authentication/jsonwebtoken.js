@@ -1,5 +1,5 @@
 const jwt = require('jsonwebtoken');
-const expiresIn = 60  //1 hour
+const expiresIn = 30  //1 hour
 const {
     encryptPassword,
     isPassword
@@ -13,12 +13,12 @@ const {
 } = require('../../db/users')
 
 function tokenValidation(req, res, next) {
-    if (req.header("x-auth") == undefined || req.params.email == undefined) {
+    if (req.header("x-auth") == undefined || req.header("email") == undefined) {
         res.status(400).send("x-auth or email missing..")
         return
     }
     
-    existUser("email", req.params.email).then(result => {
+    existUser("email", req.header("email")).then(result => {
         
         if (result == false) {
             res.status(400).send("User not found")
