@@ -1,4 +1,7 @@
 const express = require('express')
+//For email verification
+
+
 const router = express.Router()
 
 /*For encrypt passwords */
@@ -17,6 +20,8 @@ const {
     tokenValidation,
     tokenSign
 } = require('../middlewares/authentication/jsonwebtoken')
+
+
 
 router.route('/users')
     .post(encryptPassword, (req, res) => {
@@ -37,22 +42,35 @@ router.route('/users')
         }
 
         existUser("email", req.body.email).then(result => {
+           
             if (result != false) {
                 res.status(401).send(`User is already created`)
                 return
             } else {
+
+                // //Add token to user
+                
+                let theToken = tokenSign(req.body)
+                req.body.token = theToken;
+
                 createUser(req.body).then(result => {
                     if (result == false) {
                         res.status(400).send(`Database error, user not saved`)
                         return
                     } else {
-                        res.status(200).send(`User successfully saved!`)
-                        return
+                        res.status(200).send({
+                            token: theToken
+                        })
+                        return 
                     }
                 })
             }
         })
 
+    })
+    .get(tokenValidation, (req, res) => {
+       
+        res.status(200).send(req.user)
     })
 
 
@@ -74,6 +92,11 @@ router.route('/login')
                 return
             }
 
+            if (result.isVerified == false) {
+                res.status(401).send("User not verified, verify first")
+                return
+            }
+
             let theToken = tokenSign(result)
             updateUser({
                 email: result.email
@@ -88,11 +111,8 @@ router.route('/login')
 
     })
 
-router.route('/users')
-    .get(tokenValidation, (req, res) => {
-       
-        res.status(200).send(req.user)
-    })
+
+   
 
 
 /*Middleware to check correct users */

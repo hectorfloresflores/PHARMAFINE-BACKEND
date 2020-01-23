@@ -28,11 +28,6 @@ Content-Type: application/json
     "password":"flores"
 }
 
-//Request user info
-###
-GET http://localhost:3002/users/carlos@gmail.com
-Content-Type: application/json
-x-auth: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImNhcmxvc0BnbWFpbC5jb20iLCJpYXQiOjE1NzcwNTEzMDAsImV4cCI6MTU3NzA1NDkwMH0.iNWgrbfVu1qRxygS871HGlmFNLOGcH5TpyH0qBW-n00
 
 ###
 GET http://localhost:3002/checkout
@@ -41,10 +36,7 @@ x-auth: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImNhcmxvc0BnbWFpbC5jb20
 email: carlos@gmail.com
 
 
-###
-GET http://localhost:3002/users/fernanda@gmail.com
-Content-Type: application/json
-x-auth: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImZlcm5hbmRhQGdtYWlsLmNvbSIsImlhdCI6MTU3NTM5MzkxOSwiZXhwIjoxNTc1Mzk3NTE5fQ.AL-kckugkrNcX1eFEvn_l9z7EEcicZmH8TKCpLrXRs4
+th: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImZlcm5hbmRhQGdtYWlsLmNvbSIsImlhdCI6MTU3NTM5MzkxOSwiZXhwIjoxNTc1Mzk3NTE5fQ.AL-kckugkrNcX1eFEvn_l9z7EEcicZmH8TKCpLrXRs4
 
 ###
 GET http://localhost:3002/users
@@ -67,3 +59,8 @@ x-auth: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImZlcm5hbmRhQGdtYWlsLmN
 {
     "products":["abc"]
 }
+
+//Send Email Confirmation 
+###
+GET http://localhost:3002/sendEmailConfirmation?token=1234
+Content-Type: application/json

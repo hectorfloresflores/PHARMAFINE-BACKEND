@@ -50,66 +50,18 @@ document.addEventListener("click", function(event) {
           break;
   }
 })
-function myFunction() {
-  
-  let buttonEmail = document.getElementById("ph_button_email");
-  if ( document.querySelector('#ph_user_email').checkValidity() == true &&
-  document.querySelector('#ph_user_message').checkValidity() == true) {
-    buttonEmail.removeAttribute("disabled");
-  }else{
-    buttonEmail.setAttribute("disabled", "");
-  }
+
+function checkValidityEmail() {
+  // alert()
+  // let buttonEmail = document.getElementById("ph_button_email");
+  // if ( document.querySelector('#ph_user_email').checkValidity() == true &&
+  // document.querySelector('#ph_user_message').checkValidity() == true) {
+  //   buttonEmail.removeAttribute("disabled");
+  // }else{
+  //   buttonEmail.setAttribute("disabled", "");
+  // }
    
-
-    // $("input").on("input", function() {
-    //     $("input:invalid").each(function(item) {
-    //       $(this).css({
-    //         border: "2px solid rgb(224, 10, 1)"
-    //       });
-    //     });
-    //     $("input:valid").each(function(item) {
-    //       $(this).css({
-    //         border: "none"
-    //       });
-    //     });
-    //     var pass = $("input[name=up]").val();
-    //     var repass = $("input[name=up2]").val();
-    //     // if (
-    //     //   $("input[name=up]").val().length < 1 ||
-    //     //   $("input[name=up2]").val().length < 1 ||
-    //     //   pass != repass
-    //     // ) {
-    //     //   $("input[name=up],input[name=up2]").css({
-    //     //     border: "2px solid rgb(224, 10, 1)"
-    //     //   });
-    //     // } else {
-    //     //   $("input[name=up],input[name=up2]").css({
-    //     //     border: "none"
-    //     //   });
-    //     // }
-    
-    //     if (userEmail.checkValidity()) {
-    //       buttonEmail.removeAttribute("disabled");
-    //     } else {
-    //       buttonEmail.setAttribute("disabled", "");
-    //     }
-    //     if (
-    //       document.querySelector("input:invalid") == undefined &&
-    //       pass == repass
-    //     ) {
-    //       registerAccount.removeAttribute("disabled");
-    //     } else {
-    //       registerAccount.setAttribute("disabled", "");
-    
-    //       document.getElementById("ph_register_alert").innerHTML = `
-    //                     <div class="alert alert-danger alert-dismissible fade show">
-    //                     <strong>Llena todos los campos en rojo, revisa que tus contraseñas sean iguales y acepta los términos</strong>
-    //                     </div>
-    //                     `;
-    //     }
-    //   });
 }
-
 
 
 /*Refresh page when close modal email */

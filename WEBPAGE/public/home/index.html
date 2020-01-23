@@ -134,13 +134,13 @@
           <form>
             <div class="form-group">
               <label for="exampleInputEmail1">Correo</label>
-              <input type="email" class="form-control" id="ph_user_email" aria-describedby="emailHelp" required onkeyup="myFunction()"
+              <input type="email" class="form-control" id="ph_user_email" aria-describedby="emailHelp" onkeyup="checkValidityEmail()"
                 placeholder="tucorreo@gmail.com" />
               <small id="emailHelp" class="form-text">Nunca compartiremos tu email con alguien más</small>
             </div>
             <div class="form-group">
               <label for="exampleFormControlTextarea1">Comentarios</label>
-              <textarea class="form-control" id="ph_user_message" rows="3" required onkeyup="myFunction()"
+              <textarea class="form-control" id="ph_user_message" rows="3" required onkeyup="checkValidityEmail()"
                 placeholder="Hola me gustaría saber..."></textarea>
             </div>
             <button id="ph_button_email" data-toggle="modal" data-target="#ph_modal_email" type="button" class="btn btn-outline-light" disabled>Enviar</button>

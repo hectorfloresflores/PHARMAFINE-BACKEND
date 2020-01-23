@@ -106,20 +106,20 @@ document.addEventListener("click", function(event) {
         <div class="modal-body">
             <div class="row justify-content-center">
               <div class="form-group col-md-6">
-                <input id="ph_register_name" type="text" class="form-control" placeholder="Nombre" required onkeypress="myFunction()" />
+                <input id="ph_register_name" type="text" class="form-control" placeholder="Nombre" required onkeypress="checkValidityRegister()" />
               </div>
               <div class="form-group col-md-6">
-                <input id="ph_register_lastname" type="text" class="form-control" placeholder="Apellidos" required onkeyup="myFunction()"/>
+                <input id="ph_register_lastname" type="text" class="form-control" placeholder="Apellidos" required onkeyup="checkValidityRegister()"/>
               </div>
             </div>
             <div class="form-group">
-              <input id="ph_register_email" type="email" class="form-control" placeholder="Correo" required onkeyup="myFunction()"/>
+              <input id="ph_register_email" type="email" class="form-control" placeholder="Correo" required onkeyup="checkValidityRegister()"/>
             </div>
             <div class="form-group">
-              <input id="ph_register_password1" type="password" class="form-control" placeholder="Contraseña" required name=up onkeyup="myFunction()"/>
+              <input id="ph_register_password1" type="password" class="form-control" placeholder="Contraseña" required name=up onkeyup="checkValidityRegister()"/>
             </div>
             <div class="form-group">
-              <input id="ph_register_password2" type="password" class="form-control"  placeholder="Confirmar Contraseña" required name=up2 onkeyup="myFunction()"/>
+              <input id="ph_register_password2" type="password" class="form-control"  placeholder="Confirmar Contraseña" required name=up2 onkeyup="checkValidityRegister()"/>
             </div>
             <div class="form-group ">
               <label id="ph_register_label" class="checkbox-inline"><input type="checkbox" required> Acepto los <a href="#">términos
@@ -180,12 +180,33 @@ document.addEventListener("click", function(event) {
             registerPassword1.setAttribute("hidden", "");
             registerPassword2.setAttribute("hidden", "");
             registerLabel.setAttribute("hidden", "");
-            registerAccount.setAttribute("hidden", "");
-            registerAlert.innerHTML = `
-                      <div class="alert alert-success alert-dismissible fade show">
-                          <strong>Hemos enviado un link a tu correo, verificalo porfavor.</strong>
-                          </div>
-                      `;
+            document.getElementById("ph_account_create").setAttribute("hidden", "");
+
+            let response = JSON.parse(xhr.responseText);
+            //Decide to show
+            xhr.open("GET", `http://localhost:3002/sendEmailConfirmation?token=${response.token}`);
+            xhr.setRequestHeader("Content-Type", "application/json");
+            xhr.send();
+            xhr.onload = function() {
+              switch (xhr.status) {
+                case 400:
+                console.log("erores")
+                  break;
+                case 200:
+                  console.log("no erores")
+                  registerAlert.innerHTML = `
+                  <div class="alert alert-success alert-dismissible fade show">
+                      <strong>Hemos enviado un link a tu correo, verificalo porfavor.</strong>
+                      </div>
+                  `;
+                  break;
+
+                default:
+                  console.log(`${xhr.status} : ${xhr.statusText}`);
+                  break;
+              }
+            };
+           
             console.log(xhr.responseText);
             break;
 
@@ -346,3 +367,53 @@ document.addEventListener("click", function(event) {
       break;
   }
 });
+
+
+function checkValidityRegister() {
+
+   
+
+    $("input").on("input", function() {
+        $("input:invalid").each(function(item) {
+          $(this).css({
+            border: "2px solid rgb(224, 10, 1)"
+          });
+        });
+        $("input:valid").each(function(item) {
+          $(this).css({
+            border: "none"
+          });
+        });
+        var pass = $("input[name=up]").val();
+        var repass = $("input[name=up2]").val();
+        // if (
+        //   $("input[name=up]").val().length < 1 ||
+        //   $("input[name=up2]").val().length < 1 ||
+        //   pass != repass
+        // ) {
+        //   $("input[name=up],input[name=up2]").css({
+        //     border: "2px solid rgb(224, 10, 1)"
+        //   });
+        // } else {
+        //   $("input[name=up],input[name=up2]").css({
+        //     border: "none"
+        //   });
+        // }
+    
+    
+        if (
+          document.querySelector("input:invalid") == undefined &&
+          pass == repass
+        ) {
+          document.getElementById("ph_account_create").removeAttribute("disabled");
+        } else {
+          document.getElementById("ph_account_create").setAttribute("disabled", "");
+    
+          document.getElementById("ph_register_alert").innerHTML = `
+                        <div class="alert alert-danger alert-dismissible fade show">
+                        <strong>Llena todos los campos en rojo, revisa que tus contraseñas sean iguales y acepta los términos</strong>
+                        </div>
+                        `;
+        }
+      });
+}

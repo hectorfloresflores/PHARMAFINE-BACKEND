@@ -41,15 +41,21 @@ function tokenValidation(req, res, next) {
 }
 
 function tokenSign(user) {
-    return jwt.sign({
+    try {
+        return jwt.sign({
             email: user.email
         },
         user.password, {
             expiresIn: expiresIn
         })
+    } catch (error) {
+        console.log(error)
+    }
+    
 }
 
 module.exports = {
     tokenValidation,
     tokenSign
 };
+

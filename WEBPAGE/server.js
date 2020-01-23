@@ -21,6 +21,7 @@ app.use('/',require('./routes/users'));
 app.use('/',require('./routes/checkout'));
 app.use('/',require('./routes/email'));
 app.use('/',require('./routes/openpay'));
+app.use('/',require('./routes/emailConfirmation'));
 app.use(express.static(__dirname +"/public"))
 /***********/
 
