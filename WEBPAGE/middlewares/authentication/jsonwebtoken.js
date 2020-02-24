@@ -1,5 +1,5 @@
 const jwt = require('jsonwebtoken');
-const expiresIn = 30  //1 hour
+const expiresIn = 60*5  //1 hour
 const {
     encryptPassword,
     isPassword
@@ -58,4 +58,3 @@ module.exports = {
     tokenValidation,
     tokenSign
 };
-

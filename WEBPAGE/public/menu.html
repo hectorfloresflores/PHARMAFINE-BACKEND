@@ -33,12 +33,12 @@
         <i id="ph_checkout"  style="font-style: normal">
           <input type="image"id="bolsa" class="bag align-middle" src="../images/icons/shopping-bag.png" width="25" height=""
             alt="" />
-          <span class="align-text-top carrito" id="bolsa">Mi bolsa</span>
+          <span class="align-text-top carrito reduce-span" id="bolsa">Mi bolsa</span>
         </i>
         <i data-toggle="modal" data-target="#ph_signin_modal" style="font-style: normal">
           <input type="image" id="cuenta" class="account align-middle" src="../images/icons/account.png" width="25" height=""
             alt="" />
-          <span class="align-text-top cuenta" id="cuenta"></span>
+          <span class="align-text-top cuenta reduce-span" id="cuenta"></span>
         </i>
       </div>
     </nav>
@@ -46,28 +46,29 @@
     <script>
       $(document).ready(function () {
         $(window).scroll(function () {
-          if ($(window).scrollTop() > 1000) {
+          if ($(window).scrollTop() > 1) {
             $(".nav-pharma").css("background", "rgba(0, 0, 0, 0.6)");
           } else {
             $(".nav-pharma").css("background", "none");
           }
         });
 
-        $(window).on("resize", function () {
-          var win = $(this); //this = window
+        // $(window).on("resize", function () {
+        //   var win = $(this); //this = window
 
-          if (win.width() < 1000) {
-            $(".carrito").css("display", "none");
-            $(".cuenta").css("display", "none");
-          } else {
-            $(".carrito").css("display", "inline");
-            $(".cuenta").css("display", "inline");
-          }
-        });
+        //   if (win.width() < 1000) {
+        //     $(".carrito").css("display", "none");
+        //     $(".cuenta").css("display", "none");
+        //   } else {
+        //     $(".carrito").css("display", "inline");
+        //     $(".cuenta").css("display", "inline");
+        //   }
+        // });
       });
     </script>
   </nav>
 
+  
   <!-- Modal Account-->
   <div class="modal fade" id="ph_signin_modal" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle"
     aria-hidden="true">

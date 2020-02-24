@@ -62,5 +62,5 @@ x-auth: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImZlcm5hbmRhQGdtYWlsLmN
 
 //Send Email Confirmation 
 ###
-GET http://localhost:3002/sendEmailConfirmation?token=1234
+GET http://localhost:3002/verifyEmailConfirmation?token=1234
 Content-Type: application/json

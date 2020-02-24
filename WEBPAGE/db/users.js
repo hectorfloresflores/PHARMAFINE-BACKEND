@@ -159,8 +159,6 @@ async function updateUser(paramSearch, paramSet) {
 
 }
 
- 
-
 
 
 // deleteItemsCheckout({

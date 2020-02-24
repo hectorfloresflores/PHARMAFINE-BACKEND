@@ -1,5 +1,4 @@
 node_modules/
-config.jsonsendgrid.env
-sendgrid.env
+config.json
 sendgrid.env
 openpay.json

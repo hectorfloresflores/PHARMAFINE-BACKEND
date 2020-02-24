@@ -82,6 +82,11 @@ document.addEventListener("click", function(event) {
             console.log(xhr.responseText);
             insertSignInError.removeAttribute("hidden");
             break;
+          case 401:
+            insertSignInError.innerHTML = `<strong>Usuario no verificado</strong> Verifica el link que enviamos a tu correo`
+            insertSignInError.removeAttribute("hidden");
+            break;
+            
           case 200:
             response = JSON.parse(xhr.responseText);
             sessionStorage.setItem("tokenUser", response.token);
@@ -174,31 +179,37 @@ document.addEventListener("click", function(event) {
                           `;
             break;
           case 200:
-            registerName.setAttribute("hidden", "");
-            registerLastname.setAttribute("hidden", "");
-            registerEmail.setAttribute("hidden", "");
-            registerPassword1.setAttribute("hidden", "");
-            registerPassword2.setAttribute("hidden", "");
-            registerLabel.setAttribute("hidden", "");
-            document.getElementById("ph_account_create").setAttribute("hidden", "");
-
+            $('#ph_signin_modal').modal('hide');
+           
             let response = JSON.parse(xhr.responseText);
             //Decide to show
-            xhr.open("GET", `http://localhost:3002/sendEmailConfirmation?token=${response.token}`);
+            xhr.open("GET", `http://localhost:3002/sendEmailConfirmation?token=${response.token}&email=${registerEmail.value}`);
             xhr.setRequestHeader("Content-Type", "application/json");
             xhr.send();
             xhr.onload = function() {
               switch (xhr.status) {
                 case 400:
-                console.log("erores")
+                console.log("errores")
                   break;
                 case 200:
-                  console.log("no erores")
-                  registerAlert.innerHTML = `
+                  document.getElementById("ph_modal_account").innerHTML = `
+                  
+                  <div class="modal-header">
+                  <h5 class="modal-title" id="ph_modal_title">Registro de usuario</h5>
+                  <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                  </button>
+                </div>
+                <div class="modal-body">
+                  <form id="ph_sign_in_form">
                   <div class="alert alert-success alert-dismissible fade show">
-                      <strong>Hemos enviado un link a tu correo, verificalo porfavor.</strong>
-                      </div>
-                  `;
+                  <strong>Hemos enviado un link a tu correo, verificalo porfavor.</strong>
+                  </div>
+                    </div>
+                  </form>
+                </div>
+                  `
+                  $('#ph_signin_modal').modal('show');
                   break;
 
                 default:
@@ -286,9 +297,10 @@ document.addEventListener("click", function(event) {
           </div>
         </form>
       </div>
-      <div class="modal-footer">
+      <div class="modal-footer"> 
         <button type="button" id="ph_register_account" class="btn btn-outline-success" 
-          role="button">Register</a>
+        role="button">Register</a>
+      
       </div>
         `;
       if (
@@ -339,6 +351,8 @@ document.addEventListener("click", function(event) {
                
             </div>
             <div class="modal-footer">
+            <a href=""  id="ph_logout" class="btn btn-outline-danger mr-auto" 
+            role="button">Cerrar sesión</a>  
               <a href=""  data-toggle="modal" class="btn btn-outline-secondary" data-dismiss="modal"
                 role="button">Editar mi perfil</a>
             </div>
@@ -357,12 +371,15 @@ document.addEventListener("click", function(event) {
         }
       };
         break;
-        case 'bolsa':
-          window.location.href = "../checkout/index.html";
-        break;
-        case 'ph_home':
-          document.location.href="../home";
-          break;
+    case 'bolsa':
+      window.location.href = "../checkout/index.html";
+    break;
+    case 'ph_home':
+      document.location.href="../home";
+      break;
+    case 'ph_logout': 
+      sessionStorage.setItem('tokenUser',null)
+      window.location.reload();
     default:
       break;
   }

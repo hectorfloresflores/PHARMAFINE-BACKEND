@@ -12,6 +12,7 @@
 
 
 .sidenav {
+  
     height: 100%;
     width: 0;
     position: fixed;
@@ -71,7 +72,9 @@
     margin-right: 6px;
 }
   
-  
+@media all and (max-width: 800px) {
+  .reduce-span { display: none; }
+} 
   /* @media screen and (max-height: 450px) {
     .sidenav {padding-top: 15px;}
     .sidenav a {font-size: 18px;}
