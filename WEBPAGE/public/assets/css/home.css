@@ -1,0 +1,49 @@
+
+
+@import url('https://fonts.googleapis.com/css?family=Alegreya+Sans:100,300,400&display=swap');
+@import url('https://fonts.googleapis.com/css?family=Alegreya+Sans:100&display=swap');
+
+  html{
+    background-color: black;
+  }
+
+  * {
+    margin: 0;
+    padding: 0;
+}
+.imgbox {
+    display: grid;
+    height: 100%;
+}
+.center-fit {
+    max-width: 100%;
+    max-height: 100vh;
+    margin: auto;
+}
+
+/*Start of Footer*/
+.footer{
+  background-color: rgb(146, 111, 35);
+  color: white;
+}
+
+.footer-links:hover{
+  color: #A37E2C;
+  text-decoration:none;
+}
+
+.footer-links{
+  color: white;
+}
+
+/*End of Footer*/
+
+#principal{
+  padding: 200px;
+  height: 5000px;
+  background-image: linear-gradient(to top, #dad4ec 0%, #dad4ec 1%, #f3e7e9 100%);
+}
+
+#principal img{
+  width: 1300px;
+}

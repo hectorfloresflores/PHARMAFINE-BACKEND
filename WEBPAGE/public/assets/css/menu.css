@@ -1,0 +1,83 @@
+
+/* Start Navigation var and side var */
+.navbar {
+    background-color:none;
+    
+    color: white;
+    font-family: 'Alegreya Sans', sans-serif;
+    transition: background-color 1s ease 0s;
+    height: 100px;
+   }
+  
+
+
+.sidenav {
+  
+    height: 100%;
+    width: 0;
+    position: fixed;
+    z-index: 1;
+    top: 0;
+    left: 0;
+    background-color:black;
+    overflow-x: hidden;
+    transition: 0.5s;
+    padding-top: 60px;
+    font-family:  'Alegreya Sans', sans-serif;
+  }
+  
+  .sidenav a {
+    padding: 8px 8px 8px 32px;
+    text-decoration: none;
+    font-size: 15px;
+    color: white;
+    display: block;
+    transition: 0.3s;
+  }
+  
+  .sidenav a:hover {
+    color:#B09B3D;
+  }
+  
+  .sidenav .closebtn {
+    position: absolute;
+    top: 0;
+    right: 25px;
+    font-size: 20px;
+    margin-left: 50px;
+  }
+
+  .burger-menu{
+    font-size:25px;
+    margin-left: 30px;
+    color:white;
+   
+    
+  }
+
+  .burger-menu .img:hover{
+    color: #B09B3D;
+}
+
+.bag{
+    
+    right: 0;
+    margin-right: 6px;
+}
+
+.account{
+    
+    right: 0;
+    margin-left: 30px;
+    margin-right: 6px;
+}
+  
+@media all and (max-width: 800px) {
+  .reduce-span { display: none; }
+} 
+  /* @media screen and (max-height: 450px) {
+    .sidenav {padding-top: 15px;}
+    .sidenav a {font-size: 18px;}
+  } */
+
+/* End of Navigation var and side var */
