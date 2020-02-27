@@ -1,5 +1,14 @@
 {{> menu}}
 
+{{#if xauth}}
+    {{#if email}}
+    <script>    
+        sessionStorage.setItem('tokenUser','{{xauth}}')
+        sessionStorage.setItem('userEmail','{{email}}')
+    </script>
+    {{/if}}
+{{/if}}
+
 <!-- Start of Slides -->
 <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
     <ol class="carousel-indicators">

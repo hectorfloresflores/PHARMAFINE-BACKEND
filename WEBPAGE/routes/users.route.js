@@ -98,6 +98,7 @@ router.route('/login')
             }
 
             let theToken = tokenSign(result)
+            
             updateUser({
                 email: result.email
             }, {

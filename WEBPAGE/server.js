@@ -16,9 +16,21 @@ const path = require('path');
  * Uses of imports
  */
 const app = express();
-/*Users Mongo DB functions Schema */
-const {User, findUsersBy,updateUser} = require('./db/users');
-
+/*To connect to the database, not use connect*/
+require('./db/mongodb-connect');
+/** To load passport config*/
+require('./config/passport.config')
+/**Cookie for passport google users */
+// const cookieSession = require('cookie-session');
+// const passport = require('passport');
+// app.use(cookieSession({
+// maxAge: 20*1000,
+// keys: ['clave'] //clave para encriptar
+// }))
+/** To use passport */
+// app.use(passport.initialize());
+// app.use(passport.session());
+/********** */
 const port = 3002;
 
 
@@ -30,11 +42,12 @@ app.use(express.json())
 // To access data from one file to another
 app.use(cors())
 // Routing
-app.use('/',require('./routes/users'));
-app.use('/',require('./routes/checkout'));
-app.use('/',require('./routes/email'));
-app.use('/',require('./routes/openpay'));
-app.use('/',require('./routes/emailConfirmation'));
+app.use('/',require('./routes/users.route'));
+app.use('/',require('./routes/checkout.route'));
+app.use('/',require('./routes/email.route'));
+app.use('/',require('./routes/openpay.route'));
+app.use('/',require('./routes/emailConfirmation.route'));
+app.use('/auth',require('./routes/authGoogle.route'));
 // Static routing
 app.use(express.static(path.join(__dirname, '/public')));
 // To use handlebars
@@ -46,17 +59,17 @@ app.engine('hbs', exphbs({
 app.set('view engine', 'hbs');
 /***********/
 
-
-function myMiddleware(req,res, next){
-    let id = req.get('x-id');
-    req.id = id;
-    next();
-}
-
-
-
-app.get('/home1', (req,res)=>{
-    res.render('home.hbs')
+/**
+ * Home route
+ */
+app.get('/home', (req,res)=>{
+    
+    res.render('home.hbs',{
+        xauth:req.app.get('xauth'),
+        email:req.app.get('email')
+    })
+    req.app.set('xauth', null)
+    req.app.set('email', null)
 })
 
 /**Port of app to listen */

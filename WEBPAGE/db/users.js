@@ -1,6 +1,10 @@
 const mongoose = require('./mongodb-connect')
 
 let usersSchema = mongoose.Schema({
+    id: {
+        type: String,
+        unique: true
+    },
     name: {
         type: String,
         require: true
@@ -167,7 +171,7 @@ async function updateUser(paramSearch, paramSet) {
 //     console.log(result.nModified)
 //  })
 // User.updateOne({name:"carlos"},{name:"carlitos"})
-// existUser("email","carlos@gmail.com","email name").then(result =>{
+// existUser("id","107536038290800052605","email name").then(result =>{
 //     console.log(result);
 // })
 // getUsersA()
