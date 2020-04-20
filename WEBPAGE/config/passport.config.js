@@ -10,7 +10,8 @@ const {
     updateUser,
     existUser,
     createUser,
-    deleteItemsCheckout
+    deleteItemsCheckout,
+    existUserIDandEmail
 } = require('../db/users')
 
 const {
@@ -35,15 +36,17 @@ passport.use(
         lastname: profile.name.familyName,
         email: profile.emails[0].value,
         isVerified: profile.emails[0].verified,
-        password: profile.id
     }
       
-    existUser("id",profile.id).then(user =>{
-        if (!user) {
+    existUserIDandEmail(profile.id,profile.emails[0].value).then(user =>{
+        if (user == undefined) {
             createUser(newUser);
             newUser.token = createTokenAndUpdateUser(newUser);
             return done(null,newUser);
           }else{
+            if (user.id == undefined) {
+              user.id = profile.id;
+            }
             user.token = createTokenAndUpdateUser(user);
             return done(null,user);
           }
@@ -58,6 +61,7 @@ function createTokenAndUpdateUser(user) {
   updateUser({
       email: user.email
   }, {
+      id:user.id,
       token: theToken
   })
 

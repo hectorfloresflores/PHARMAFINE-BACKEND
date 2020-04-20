@@ -90,6 +90,19 @@ async function existUser(parameter, id,properties) {
     }
 }
 
+async function existUserIDandEmail(id, email) {
+    try {
+        let docs = await User.findOne({$or:[
+            {'id':id},
+            {'email':email}]});
+            return docs
+        
+    } catch (error) {
+        console.log(`Error, Cant find user on server`);
+        return false
+    }
+}
+
 async function findUsersBy(parameter, id) {
     try {
         let docs = await User.find({
@@ -181,11 +194,20 @@ async function updateUser(paramSearch, paramSet) {
 //     console.log(result);
 // })
 
+
+
+User.findOne({$or:[{'name':"pharmaine"},{'emai':"phamafine.mx@gmail.com"}]},
+function (err,docs) {
+    console.log(docs == undefined,err)
+});
+
+   
 module.exports = {
     User,
     findUsersBy,
     updateUser,
     existUser,
     createUser,
-    deleteItemsCheckout
+    deleteItemsCheckout,
+    existUserIDandEmail
 };

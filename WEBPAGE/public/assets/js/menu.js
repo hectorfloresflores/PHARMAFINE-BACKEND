@@ -335,7 +335,10 @@ document.addEventListener("click", function(event) {
     case "bolsa":
       window.location.href = "../checkout/index.html";
       break;
-    case "ph_home":
+    case "productos":
+    window.location.href = "../products/index.html";
+      break;
+      case "ph_home":
       document.location.href = "../home";
       break;
     case "ph_logout":

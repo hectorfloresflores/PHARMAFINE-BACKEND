@@ -39,6 +39,13 @@ function tokenValidation(req, res, next) {
         }
 
         req.user = result
+
+        let password;
+        if (userIndentifier == 'email') {
+            password = result.password;
+        }else{
+            password = result.id;
+        }
        
         jwt.verify(req.header("x-auth"), result.password, (err, decoded) => {
             if (err) {
