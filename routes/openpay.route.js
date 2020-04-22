@@ -4,8 +4,8 @@ const router = express.Router()
 var Openpay = require('openpay');
 
 
-const id = process.env.openpay_id;
-const privatekey = process.env.openpay_privatekey;
+const id = process.env.openpay.id;
+const privatekey = process.env.openpay.privatekey;
 //instantiation
 var openpay = new Openpay(id, privatekey, false);
 //use the api

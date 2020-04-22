@@ -1,9 +1,9 @@
 /*To connect with mongo database easy */
 const mongoose = require("mongoose")
 
-const password = process.env.mongodb_password;
-const dbname = process.env.mongodb_name;
-const username = process.env.mongodb_username;
+const password = process.env.mongodb.password;
+const dbname = process.env.mongodb.name;
+const username = process.env.mongodb.username;
 let mongoDB = `mongodb+srv://${username}:${password}@cluster-vs1if.mongodb.net/${dbname}?retryWrites=true&w=majority`
 
 /*Try connection with mongo*/

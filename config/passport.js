@@ -1,6 +1,6 @@
 const passport = require("passport");
-const clientID = process.env.passport_clientid;
-const clientSECRET = process.env.passport_secret;
+const clientID = process.env.passport.clientid;
+const clientSECRET = process.env.passport.secret;
 
 const GoogleStrategy = require("passport-google-oauth").OAuth2Strategy;
 
