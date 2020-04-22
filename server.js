@@ -5,8 +5,8 @@
  */
 // For create server
 
-
-require('dotenv').config({path: __dirname + '/config.env'});
+// if (process.env.NODE_ENV !== 'production')
+    require('dotenv').config({path: __dirname + '/config.env'});
 
 const express = require('express');
 // For access data from one file to another
