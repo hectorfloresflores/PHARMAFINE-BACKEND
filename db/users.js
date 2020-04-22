@@ -184,7 +184,7 @@ async function updateUser(paramSearch, paramSet) {
 //     console.log(result.nModified)
 //  })
 // User.updateOne({name:"carlos"},{name:"carlitos"})
-// existUser("id","107536038290800052605","email name").then(result =>{
+// existUser("name","carlos","email name").then(result =>{
 //     console.log(result);
 // })
 // getUsersA()
@@ -194,12 +194,14 @@ async function updateUser(paramSearch, paramSet) {
 //     console.log(result);
 // })
 
+User.find({}).then(result =>{
+    console.log(result);
+})
 
-
-User.findOne({$or:[{'name':"pharmaine"},{'emai':"phamafine.mx@gmail.com"}]},
-function (err,docs) {
-    console.log(docs == undefined,err)
-});
+// User.findOne({$or:[{'name':"carlos"}]},
+// function (err,docs) {
+//     console.log(docs == undefined,err)
+// });
 
    
 module.exports = {

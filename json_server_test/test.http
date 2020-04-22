@@ -6,12 +6,12 @@ Content-Type: application/json
 
 
 ###
-POST http://localhost:3002/users
+POST http://localhost:5000/users
 Content-Type: application/json
 
 {
-    "name":"carlos",
-    "lastname":"",
+    "name":"lupita",
+    "lastname":"flores",
     "genre":"MAN",
     "date":"",
     "url":"",
@@ -20,7 +20,7 @@ Content-Type: application/json
 }
 
 ###
-POST http://localhost:3002/login
+POST http://localhost:5000/login
 Content-Type: application/json
 
 {

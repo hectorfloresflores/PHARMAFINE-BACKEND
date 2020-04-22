@@ -2,7 +2,7 @@
 const mongoose = require("mongoose")
 
 const password = process.env.mongodb_password;
-const dbname = process.env.mongodb_name;
+const dbname = process.env.mongodb_dbname;
 const username = process.env.mongodb_username;
 let mongoDB = `mongodb+srv://${username}:${password}@cluster-vs1if.mongodb.net/${dbname}?retryWrites=true&w=majority`
 
