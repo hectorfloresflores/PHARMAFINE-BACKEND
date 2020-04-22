@@ -1,7 +1,7 @@
 "use strict";
 
 /*Reference of server */
-let serverLink = "http://localhost:3002";
+let serverLink = "";
 
 /* Navigation links */
 let miAccount = document.querySelector(`[data-target="#ph_signin_modal"]`);
