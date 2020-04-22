@@ -194,9 +194,9 @@ async function updateUser(paramSearch, paramSet) {
 //     console.log(result);
 // })
 
-User.find({}).then(result =>{
-    console.log(result);
-})
+// User.find({}).then(result =>{
+//     console.log(result);
+// })
 
 // User.findOne({$or:[{'name':"carlos"}]},
 // function (err,docs) {

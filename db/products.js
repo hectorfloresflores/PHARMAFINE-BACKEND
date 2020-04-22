@@ -27,9 +27,9 @@ let productsSchema = mongoose.Schema({
 let Product = mongoose.model('products', productsSchema)
 
 //Usage:
-getProducts(["0001"]).then(result =>{
-    console.log(result)
-})
+// getProducts(["0001"]).then(result =>{
+//     console.log(result)
+// })
 async function getProducts(productsIDs) {
     
     try {
