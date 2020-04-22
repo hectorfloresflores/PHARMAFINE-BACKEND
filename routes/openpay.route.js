@@ -2,9 +2,12 @@ const express = require('express')
 const router = express.Router()
 
 var Openpay = require('openpay');
-const openpayCredentials = require('./openpay.json');
+const openpayCredentials = require('./openpay.config.json');
+
+const id = process.env.openpay.id || openpayCredentials.openpay.id;
+const privatekey = process.env.openpay.privatekey || openpayCredentials.openpay.privatekey;
 //instantiation
-var openpay = new Openpay(openpayCredentials.id, openpayCredentials.privatekey, false);
+var openpay = new Openpay(id, privatekey, false);
 //use the api
 
 /*For encrypt passwords */
