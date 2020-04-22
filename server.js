@@ -3,7 +3,7 @@
 /**
  * Imports
  */
-if(process.env.NPM_CONFIG_PRODUCTION == false)
+if(process.env.NPM_CONFIG_PRODUCTION == true)
 console.log(require('dotenv').config({path: __dirname + '/config.env'}))
 // For create server
 const express = require('express');
