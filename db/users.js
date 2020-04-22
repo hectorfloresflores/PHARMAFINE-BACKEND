@@ -1,4 +1,4 @@
-console.log(require('dotenv').config({path:'../config.env'}));
+// console.log(require('dotenv').config({path:'../config.env'}));
 const mongoose = require('./mongodb-connect')
 
 let usersSchema = mongoose.Schema({
@@ -195,9 +195,9 @@ async function updateUser(paramSearch, paramSet) {
 //     console.log(result);
 // })
 
-existUserIDandEmail("email","carlos.flogars@gmail.com").then(result =>{
-    console.log(result);
-})
+// existUserIDandEmail("email","carlos.flogars@gmail.com").then(result =>{
+//     console.log(result);
+// })
 
 // User.findOne({$or:[{'name':"carlos"}]},
 // function (err,docs) {
