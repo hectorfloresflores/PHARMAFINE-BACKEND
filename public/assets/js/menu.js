@@ -63,7 +63,7 @@ document.addEventListener("click", function(event) {
         password: emailPassword.value
       };
 
-      xhr.open("POST", "http://localhost:3002/login");
+      xhr.open("POST", "/login");
       xhr.setRequestHeader("Content-Type", "application/json");
       xhr.send(JSON.stringify(user));
       xhr.onload = function() {
