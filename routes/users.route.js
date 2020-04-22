@@ -84,7 +84,7 @@ router.route('/login')
         console.log(req.body.email)
         existUser("email", req.body.email).then(result => {
             if (result == false) {
-                res.status(400).send("User not found or Bad password...")
+                res.status(400).send("User not found or Bad password...,")
                 return
             }
             if (isPassword(req.body.password, result.password) == false) {
