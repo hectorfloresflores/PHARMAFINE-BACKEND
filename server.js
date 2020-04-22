@@ -19,7 +19,7 @@ const app = express();
 /*To connect to the database, not use connect*/
 require('./db/mongodb-connect');
 /** To load passport config*/
-require('./config/passport.config')
+require('./config/passport')
 /**Cookie for passport google users */
 // const cookieSession = require('cookie-session');
 // const passport = require('passport');

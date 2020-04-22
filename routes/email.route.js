@@ -1,7 +1,7 @@
 const express = require('express')
 const router = express.Router()
 const sgMail = require('@sendgrid/mail');
-sgMail.setApiKey(process.env.SENDGRID_API_KEY);
+sgMail.setApiKey(process.env.openpay.id);
 const sendmail = require('sendmail')
 
 router.route('/email')
