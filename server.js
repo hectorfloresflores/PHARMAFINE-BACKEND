@@ -31,7 +31,7 @@ require('./config/passport.config')
 // app.use(passport.initialize());
 // app.use(passport.session());
 /********** */
-const port = 3002;
+const port = process.env.PORT || 5000;
 
 
 /**
