@@ -81,7 +81,7 @@ router.route('/login')
             res.status(400).send("Email or Password missing")
             return
         }
-        console.log()
+        console.log(req.body.email)
         existUser("email", req.body.email).then(result => {
             if (result == false) {
                 res.status(400).send("User not found or Bad password.")
