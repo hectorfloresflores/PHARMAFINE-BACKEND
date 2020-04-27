@@ -21,9 +21,52 @@ const {
     tokenSign
 } = require('../middlewares/authentication/jsonwebtoken')
 
-
+const {
+    route,
+    sendMailConfirmation
+} = require('./emailConfirmation.route')
 
 router.route('/users')
+    /**
+     * @swagger
+     * /users:
+     *   post:
+     *     consumes:
+     *       - application/json
+     *     parameters:
+     *        - in: body
+     *          name: user
+     *          description: The user to create.
+     *          schema:
+     *            type: object
+     *            required:
+     *              - name
+     *              - email
+     *              - paswword
+     *              - lastname
+     *              - genre
+     *              - date
+     *              - url
+     *            properties:
+     *              name:
+     *                type: string
+     *              email:
+     *                type: string
+     *              password:
+     *                type: string
+     *              lastname:
+     *                type: string
+     *              genre:
+     *                type: string
+     *              date:
+     *                type: string
+     *              url:
+     *                type: string
+     *     responses:
+     *      201:
+     *        description: New message created!
+     *
+     */
     .post(encryptPassword, (req, res) => {
 
         let user = req.body
@@ -58,6 +101,8 @@ router.route('/users')
                         res.status(400).send(`Database error, user not saved`)
                         return
                     } else {
+                        /*To send email link for confirmation*/
+                        sendMailConfirmation(req.get("host"), theToken, req.body.email);
                         res.status(200).send({
                             token: theToken
                         })
@@ -68,6 +113,16 @@ router.route('/users')
         })
 
     })
+    /**
+     * @swagger
+     * /users:
+     *  get:
+     *   description: To get user info
+     *   produces:
+     *    - application/json
+     *   responses:
+     *    '200': suuccesful response
+     */
     .get(tokenValidation, (req, res) => {
        
         res.status(200).send(req.user)
@@ -75,6 +130,33 @@ router.route('/users')
 
 
 router.route('/login')
+    /**
+     * @swagger
+     *  /login:
+     *    post:
+     *      summary: Creates a new message.
+     *      consumes:
+     *        - application/json
+     *      tags:
+     *        - Create a new message
+     *      parameters:
+     *        - in: body
+     *          name: user
+     *          description: The user to create.
+     *          schema:
+     *            type: object
+     *            required:
+     *              - email
+     *              - paswword
+     *            properties:
+     *              name:
+     *                type: string
+     *              email:
+     *                type: string
+     *      responses:
+     *        201:
+     *          description: New message created!
+     */
     .post((req, res) => {
 
         if (req.body.email == undefined || req.body.password == undefined) {

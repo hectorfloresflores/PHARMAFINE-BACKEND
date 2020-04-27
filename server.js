@@ -5,7 +5,7 @@
  */
 
 if(process.env.NPM_CONFIG_PRODUCTION == undefined)
-console.log(require('dotenv').config({path: __dirname + '/config.env'}))
+require('dotenv').config({path: __dirname + '/config.env'})
 // For create server
 const express = require('express');
 // For access data from one file to another
@@ -19,6 +19,29 @@ const path = require('path');
  * Uses of imports
  */
 const app = express();
+
+/**
+ * Documented api routes.
+ */
+const swaggerUi = require('swagger-ui-express');
+const swaggerJsDoc = require('swagger-jsdoc');
+
+const swaggerOptions = {
+    swaggerDefinition: {
+        info: {
+            titile: 'CustomerApi',
+            description: 'Customer api',
+            contact: {
+                name: "Amazinf dev"
+            },
+            servers: ["http://localhost:5000"]
+        }
+    },
+    apis: ["server.js","./routes/users.route.js"]
+}
+const swaggerDocs = swaggerJsDoc(swaggerOptions);
+app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerDocs));
+
 /*To connect to the database, not use connect*/
 require('./db/mongodb-connect');
 /** To load passport config*/
@@ -49,7 +72,7 @@ app.use('/',require('./routes/users.route'));
 app.use('/',require('./routes/checkout.route'));
 app.use('/',require('./routes/email.route'));
 app.use('/',require('./routes/openpay.route'));
-app.use('/',require('./routes/emailConfirmation.route'));
+app.use('/',require('./routes/emailConfirmation.route').router);
 app.use('/auth',require('./routes/authGoogle.route'));
 // Static routing
 app.use(express.static(path.join(__dirname, '/public')));
@@ -63,7 +86,12 @@ app.set('view engine', 'hbs');
 /***********/
 
 /**
- * Home route
+ * @swagger
+ * /home:
+ *  get:
+ *      description: use
+ *      responses:
+ *          '200': suuccesful response
  */
 app.get('/home', (req,res)=>{
     
@@ -77,4 +105,6 @@ app.get('/home', (req,res)=>{
 
 /**Port of app to listen */
 app.listen(port, ()=> console.log(`http://localhost:${port}`))
+
+
 
