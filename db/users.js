@@ -157,13 +157,6 @@ async function deleteItemsCheckout(email,productsIDs){
         }else{
             console.log("User dosent exist")
         }
-        
-    
-    
-  
-    
-   
-
 }
 
 async function updateUser(paramSearch, paramSet) {
@@ -175,6 +168,17 @@ async function updateUser(paramSearch, paramSet) {
         return false
     }
 
+}
+
+async function getUsers() {
+    try {
+        let users = await User.find();
+        return users;
+
+    } catch (error) {
+        console.log(`Error, Cant find users`);
+        return false
+    }
 }
 
 
@@ -212,5 +216,6 @@ module.exports = {
     existUser,
     createUser,
     deleteItemsCheckout,
-    existUserIDandEmail
+    existUserIDandEmail,
+    getUsers
 };

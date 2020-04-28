@@ -37,7 +37,7 @@ const swaggerOptions = {
             servers: ["http://localhost:5000"]
         }
     },
-    apis: ["server.js","./routes/users.route.js"]
+    apis: ["server.js","./routes/users.route.js","./routes/products.route.js"]
 }
 const swaggerDocs = swaggerJsDoc(swaggerOptions);
 app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerDocs));
@@ -69,13 +69,14 @@ app.use(express.json())
 app.use(cors())
 // Routing
 app.use('/',require('./routes/users.route'));
+app.use('/',require('./routes/products.route'));
 app.use('/',require('./routes/checkout.route'));
 app.use('/',require('./routes/email.route'));
 app.use('/',require('./routes/openpay.route'));
 app.use('/',require('./routes/emailConfirmation.route').router);
 app.use('/auth',require('./routes/authGoogle.route'));
 // Static routing
-app.use(express.static(path.join(__dirname, '/public')));
+// app.use(express.static(path.join(__dirname, '/public')));
 // To use handlebars
 app.engine('hbs', exphbs({ 
     extname: 'hbs',
@@ -89,6 +90,9 @@ app.set('view engine', 'hbs');
  * @swagger
  * /home:
  *  get:
+ *      tags:
+ *        - All things related to user
+ *      summary: Creates a new message.
  *      description: use
  *      responses:
  *          '200': suuccesful response

@@ -42,8 +42,18 @@ async function getProducts(productsIDs) {
     }   
 }
 
+async function getAll() {
+    try {
+        let products = await Product.find()
+        return products
+    } catch (error) {
+
+    }
+}
+
 
 
 module.exports = {
-    getProducts
+    getProducts,
+    getAll
 };

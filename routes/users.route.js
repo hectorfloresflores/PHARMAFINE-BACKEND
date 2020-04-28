@@ -31,6 +31,9 @@ router.route('/users')
      * @swagger
      * /users:
      *   post:
+     *     tags:
+     *        - All things related to user
+     *     summary: Create a new user with
      *     consumes:
      *       - application/json
      *     parameters:
@@ -117,9 +120,23 @@ router.route('/users')
      * @swagger
      * /users:
      *  get:
+     *   tags:
+     *        - All things related to user
+     *   summary: Get users by typing email and xauth
      *   description: To get user info
      *   produces:
      *    - application/json
+     *   parameters:
+     *     - in: header
+     *       name: email
+     *       schema:
+     *         type: string
+     *       required: true
+     *     - in: header
+     *       name: x-auth
+     *       schema:
+     *         type: string
+     *       required: true
      *   responses:
      *    '200': suuccesful response
      */
@@ -134,11 +151,11 @@ router.route('/login')
      * @swagger
      *  /login:
      *    post:
-     *      summary: Creates a new message.
+     *      tags:
+     *        - All things related to user
+     *      summary: Login with email and password
      *      consumes:
      *        - application/json
-     *      tags:
-     *        - Create a new message
      *      parameters:
      *        - in: body
      *          name: user
@@ -163,7 +180,7 @@ router.route('/login')
             res.status(400).send("Email or Password missing")
             return
         }
-        console.log(req.body.email)
+
         existUser("email", req.body.email).then(result => {
             if (result == false) {
                 res.status(400).send("User not found or Bad password...,")
