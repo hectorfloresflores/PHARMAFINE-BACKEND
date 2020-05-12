@@ -5,7 +5,7 @@
  */
 
 if(process.env.NPM_CONFIG_PRODUCTION == undefined)
-require('dotenv').config({path: __dirname + '/config.env'})
+require('dotenv').config({path: __dirname + '/config.env'});
 // For create server
 const express = require('express');
 // For access data from one file to another

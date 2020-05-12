@@ -9,10 +9,9 @@ router.get('/google/login',passport.authenticate('google',{
     })).get('/google/redirect',passport.authenticate('google',{
         session: false
     }),(req,res)=>{
-    
-        req.app.set('xauth', req.user.token)
-        req.app.set('email', req.user.id)
-        res.status(301).redirect(`http://pharmafine-frontend.herokuapp.com/home`)
+
+
+        res.status(200).send({email:req.user.id, token:req.user.token});
     }).get('/logout',(req,res)=>{
         req.logOut()
         res.send('Logout')

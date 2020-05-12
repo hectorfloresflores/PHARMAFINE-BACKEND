@@ -1,6 +1,6 @@
 const passport = require("passport");
 const clientID = process.env.passport_clientid;
-const clientSECRET = process.env.passport_secret;
+const clientSECRET = process.env.passport_clientsecret;
 
 const GoogleStrategy = require("passport-google-oauth").OAuth2Strategy;
 
@@ -24,7 +24,7 @@ passport.use(
     {
       clientID: clientID,
       clientSecret: clientSECRET,
-      callbackURL: "http://pharmafine.herokuapp.com/auth/google/redirect"
+      callbackURL: "/auth/google/redirect"
     },
     function(accessToken, refreshToken, profile, done) {
 
