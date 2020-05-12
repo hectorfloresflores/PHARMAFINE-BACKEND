@@ -12,7 +12,7 @@ router.get('/google/login',passport.authenticate('google',{
     
         req.app.set('xauth', req.user.token)
         req.app.set('email', req.user.id)
-        res.redirect(`http://pharmafine-frontend.herokuapp.com/home`)
+        res.status(301).redirect(`http://pharmafine-frontend.herokuapp.com/home`)
     }).get('/logout',(req,res)=>{
         req.logOut()
         res.send('Logout')
