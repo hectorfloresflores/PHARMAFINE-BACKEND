@@ -76,7 +76,7 @@ app.use('/',require('./routes/openpay.route'));
 app.use('/',require('./routes/emailConfirmation.route').router);
 app.use('/auth',require('./routes/authGoogle.route'));
 // Static routing
-// app.use(express.static(path.join(__dirname, '/public')));
+// app.use(express.static(path.join(__dirname, '/dist/')));
 // To use handlebars
 app.engine('hbs', exphbs({ 
     extname: 'hbs',

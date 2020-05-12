@@ -24,7 +24,7 @@ passport.use(
     {
       clientID: clientID,
       clientSecret: clientSECRET,
-      callbackURL: "http://localhost:3002/auth/google/redirect"
+      callbackURL: "http://pharmafine.herokuapp.com/auth/google/redirect"
     },
     function(accessToken, refreshToken, profile, done) {
 

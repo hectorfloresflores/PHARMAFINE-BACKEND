@@ -6,21 +6,18 @@ Content-Type: application/json
 
 
 ###
-POST http://localhost:5000/users
+POST http://pharmafine.herokuapp.com/users
 Content-Type: application/json
 
 {
-    "name":"lupita",
+    "name":"carlos",
     "lastname":"flores",
-    "genre":"MAN",
-    "date":"",
-    "url":"",
-    "email":"",
-    "password":""
+    "email":"carlos.flogars@gmail.com",
+    "password":"1234"
 }
 
 ###
-POST http://pharmafine.herokuapp.com//login
+POST http://pharmafine.herokuapp.com/login
 Content-Type: application/json
 
 {
@@ -41,10 +38,10 @@ email: carlos@gmail.com
 
 
 ###
-GET http://localhost:3002/users
+GET http://pharmafine.herokuapp.com/users
 Content-Type: application/json
-email: julain@gmail.com
-x-auth: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImZlcm5hbmRhQGdtYWlsLmNvbSIsImlhdCI6MTU3NTM5MzkxOSwiZXhwIjoxNTc1Mzk3NTE5fQ.AL-kckugkrNcX1eFEvn_l9z7EEcicZmH8TKCpLrXRs4
+email: maria@gmail.com
+x-auth: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6Im1hcmlhQGdtYWlsLmNvbSIsImlhdCI6MTU4OTA4ODI0NiwiZXhwIjoxNTg5MDg4NTQ2fQ.h-5poWTMz9PbaEXfguxhtJD2_HAUj3yc_5AisOR_rWg
 
 
 ###
