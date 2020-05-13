@@ -1,6 +1,6 @@
 'use strict';
 const jwt = require('jsonwebtoken');
-const expiresIn = 60*5  //1 hour
+const expiresIn = 60*60  //1 hour
 const {
     encryptPassword,
     isPassword

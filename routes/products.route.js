@@ -17,9 +17,10 @@ router.route('/products')
      *          description: New message created!
      */
     .get((req, res) => {
-        getAll().then(products =>{
+        getProducts(req.query.name).then(products =>{
             res.status(200).send(products);
         })
+
 })
 
 module.exports = router;

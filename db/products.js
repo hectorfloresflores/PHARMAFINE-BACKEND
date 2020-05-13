@@ -30,12 +30,12 @@ let Product = mongoose.model('products', productsSchema)
 // getProducts(["0001"]).then(result =>{
 //     console.log(result)
 // })
-async function getProducts(productsIDs) {
+async function getProducts(name) {
     
     try {
         let products = await Product.find({
-            'id': { $in: productsIDs}
-        }).lean()
+         "name": { "$regex": name, "$options": "i" }
+        })
         return products
     } catch (error) {
         
@@ -51,8 +51,9 @@ async function getAll() {
     }
 }
 
-
-
+// getProducts('o').then(r =>{
+//     console.log(r);
+// })
 module.exports = {
     getProducts,
     getAll

@@ -7,7 +7,9 @@
     "test1": "echo \"Error: no test specified\" && exit 1",
     "start": "node server.js",
     "test": "jest",
-    "jest":{"testEnvironment":"node"}
+    "jest": {
+      "testEnvironment": "node"
+    }
   },
   "keywords": [],
   "author": "",
@@ -28,6 +30,7 @@
     "passport-google-oauth": "^2.0.0",
     "path": "^0.12.7",
     "sendmail": "^1.6.1",
+    "socket.io": "^2.3.0",
     "swagger-jsdoc": "^4.0.0",
     "swagger-ui-express": "^4.1.4"
   },
