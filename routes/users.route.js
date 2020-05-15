@@ -116,6 +116,39 @@ router.route('/users')
         })
 
     })
+
+    .patch(tokenValidation,(req,res) => {
+
+        let params = {
+            "name":'',
+            "lastname":'',
+            "password":'',
+            'url':'',
+            'date':'',
+            'genre':'',
+            'checkout':'',
+            'role':''}
+
+        for (let [key, value] of Object.entries(req.body)) {
+            console.log(key)
+            if (params[key] == undefined) {
+                res.status(400).send(key + ' dosent exist')
+                return
+            }
+        }
+
+        updateUser({
+            email:req.user.email
+        },req.body).then(r =>{
+            if (r.ok) {
+                res.status(200).send(' updated')
+                return
+            } else {
+                res.status(400).send('Not updated')
+                return
+            }
+        })
+    })
     /**
      * @swagger
      * /users:

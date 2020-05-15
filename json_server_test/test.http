@@ -17,12 +17,31 @@ Content-Type: application/json
 }
 
 ###
+PATCH http://localhost:5000/users
+Content-Type: application/json
+x-auth: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImNhcmxvcy5mbG9nYXJzQGdtYWlsLmNvbSIsImlhdCI6MTU4OTU2MDg3MCwiZXhwIjoxNTg5NTY0NDcwfQ.aMOmIT91fXBr4YhgvXQCfjPUJxSxaSDre-w43nVx9X4
+email: 108831227522248479954
+
+{
+  "url": "www"
+}
+
+###
 POST http://pharmafine.herokuapp.com/login
 Content-Type: application/json
 
 {
     "email":"carlos.flogars@gmail.com",
     "password":"1234"
+}
+
+###
+POST http://localhost:5000/login
+Content-Type: application/json
+
+{
+  "email":"maria@gmail.com",
+  "password":"1234"
 }
 
 ###
@@ -34,14 +53,23 @@ Content-Type: application/json
 x-auth: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImNhcmxvc0BnbWFpbC5jb20iLCJpYXQiOjE1NzU0OTk0NzgsImV4cCI6MTU3NTUwMzA3OH0.FnHWc1-KMcgM7omnCSjW1EqBq_JdlA9segR-jBCZCxk
 email: carlos@gmail.com
 
+###
+PATCH http://localhost:5000/checkout
+Content-Type: application/json
+x-auth: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6Im1hcmlhQGdtYWlsLmNvbSIsImlhdCI6MTU4OTQyNTAwNSwiZXhwIjoxNTg5NDI4NjA1fQ.zRKPQNKI8gMaJEwLfNYQ19gn0SQycRlAs5NOPLCX1kE
+email: maria@gmail.com
 
+{
+  "product": "0003",
+  "quantity": "2"
+}
 
 
 ###
 GET http://pharmafine.herokuapp.com/users
 Content-Type: application/json
-email: maria@gmail.com
-x-auth: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6Im1hcmlhQGdtYWlsLmNvbSIsImlhdCI6MTU4OTA4ODI0NiwiZXhwIjoxNTg5MDg4NTQ2fQ.h-5poWTMz9PbaEXfguxhtJD2_HAUj3yc_5AisOR_rWg
+email: carlos.flogars@gmail.com
+x-auth: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImNhcmxvcy5mbG9nYXJzQGdtYWlsLmNvbSIsImlhdCI6MTU4OTU2MDM5OSwiZXhwIjoxNTg5NTYzOTk5fQ.sZu8a_joy_lRznpX8HdU3i9WBWFFepWxo1o-qwru-B0
 
 
 ###

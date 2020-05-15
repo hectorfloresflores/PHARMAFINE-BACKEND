@@ -19,12 +19,49 @@ const {
 } = require('../middlewares/authentication/jsonwebtoken')
 
 router.route('/checkout')
-    .post((req, res) => {
-        
-                
-       
-        // getProducts()
-        res.status(202).send(`User successfully saved!`)
+    .patch(tokenValidation,(req, res) => {
+
+
+
+        let numberOfProducts = parseInt(req.body.quantity);
+        let productID = req.body.product;
+        let modified = false;
+        let newCheckout = req.user.checkout.map((item, index, theArray) => {
+            if (item.split('-')[0] == productID) {
+                modified = true;
+                let id = item.split('-')[0];
+                let quantity = parseInt(item.split('-')[1]);
+                let newItem;
+                //Set 0 when the number of objects is minor
+                if (numberOfProducts < 0 && quantity < Math.abs(numberOfProducts)) {
+                    newItem = id + '-' + '0';
+                } else {
+                    newItem = id + '-' + (quantity+numberOfProducts);
+                }
+                return newItem;
+            } else {
+                return item;
+            }
+
+        });
+
+        if (modified == false) {
+
+            let newItem = productID + '-' + Math.abs(numberOfProducts);
+            newCheckout.push(newItem);
+        }
+
+        updateUser({
+            email: req.user.email
+        }, {
+            checkout: newCheckout
+        }).then(response =>{
+
+                res.status(200).send(`Checkout updated`);
+
+        })
+
+
     })
     .get(tokenValidation,(req, res) => {
         existUser("email", req.headers.email).then(result => {

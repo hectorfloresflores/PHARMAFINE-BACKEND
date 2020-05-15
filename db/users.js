@@ -164,6 +164,7 @@ async function updateUser(paramSearch, paramSet) {
      try {
         return await User.updateOne(paramSearch, paramSet)
     } catch (error) {
+
         console.log(`Error ON DATABASE`);
         return false
     }
@@ -207,8 +208,9 @@ async function getUsers() {
 // function (err,docs) {
 //     console.log(docs == undefined,err)
 // });
+//
 
-   
+
 module.exports = {
     User,
     findUsersBy,

@@ -9,7 +9,7 @@ router.get('/google/login',passport.authenticate('google',{
     })).get('/google/redirect',passport.authenticate('google',{
         session: false
     }),(req,res)=>{
-
+        
          res.status(200).redirect(`http://localhost:4200/home?user=${JSON.stringify(req.user)}`)
     // res.status(200).send('jaja')
     }).get('/logout',(req,res)=>{

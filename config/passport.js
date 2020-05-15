@@ -40,9 +40,10 @@ passport.use(
 
     existUserIDandEmail(profile.id,profile.emails[0].value).then(user =>{
         if (user == undefined) {
-            createUser(newUser);
-            newUser.token = createTokenAndUpdateUser(newUser);
-            return done(null,newUser);
+            createUser(newUser).then(result =>{
+                newUser.token = createTokenAndUpdateUser(newUser);
+                return done(null,newUser);
+            });
           }else{
             if (user.id == undefined) {
               user.id = profile.id;
@@ -57,6 +58,7 @@ passport.use(
 );
 
 function createTokenAndUpdateUser(user) {
+
   let theToken = tokenSign(user)
   updateUser({
       email: user.email

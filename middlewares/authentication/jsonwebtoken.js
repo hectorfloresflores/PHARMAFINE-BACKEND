@@ -47,7 +47,7 @@ function tokenValidation(req, res, next) {
             password = result.id;
         }
        
-        jwt.verify(req.header("x-auth"), result.password, (err, decoded) => {
+        jwt.verify(req.header("x-auth"), password, (err, decoded) => {
             if (err) {
                 res.status(400).send("Not authenticated")
                 return
