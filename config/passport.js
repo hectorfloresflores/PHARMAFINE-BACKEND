@@ -35,6 +35,7 @@ passport.use(
         name: profile.name.givenName,
         lastname: profile.name.familyName,
         email: profile.emails[0].value,
+          role: 'USER',
         isVerified: profile.emails[0].verified,
     }
 
