@@ -30,6 +30,30 @@ let Product = mongoose.model('products', productsSchema)
 // getProducts(["0001"]).then(result =>{
 //     console.log(result)
 // })
+
+let newProduct = {
+    name: "proteina de fresa",
+    description: "proteina natural de fresa",
+    precio: 700,
+    image: "https://picsum.photos/id/10/300/300",
+    id: "0004",
+    stock: 10
+}
+
+
+async function createProduct(product) {
+    try {
+        let nUsr = Product(product)
+        let doc = await nUsr.save()
+        console.log("User Created");
+        return true
+    } catch (error) {
+        console.log(error)
+        return false
+    }
+
+}
+
 async function getProducts(name) {
     
     try {
@@ -85,6 +109,10 @@ async function findByIds(productIds) {
         return false;
     }
 }
+
+createProduct(newProduct).then(r =>{
+    console.log(r);
+})
 
 // getProducts('o').then(r =>{
 //     console.log(r);
