@@ -110,9 +110,9 @@ async function findByIds(productIds) {
     }
 }
 
-createProduct(newProduct).then(r =>{
-    console.log(r);
-})
+// createProduct(newProduct).then(r =>{
+//     console.log(r);
+// })
 
 // getProducts('o').then(r =>{
 //     console.log(r);
