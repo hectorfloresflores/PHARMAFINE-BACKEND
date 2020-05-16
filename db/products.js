@@ -51,10 +51,56 @@ async function getAll() {
     }
 }
 
+async function getPriceRange(min, max) {
+    try {
+        let products = await Product.find(
+            {price: {$gte: parseInt(min), $lte: parseInt(max)}}
+
+        )
+        return products
+    } catch (error) {
+
+    }
+}
+
+async function getExistanceGreaterThan(min) {
+    try {
+        let products = await Product.find(
+            {stock: {$gte: parseInt(min)}}
+
+        )
+        return products
+    } catch (error) {
+
+    }
+}
+
+async function findByIds(productIds) {
+    try {
+        let products = await Product.find(
+            { 'id': { $in: productIds}}
+        )
+        return products
+    } catch (error) {
+        return false;
+    }
+}
+
 // getProducts('o').then(r =>{
 //     console.log(r);
 // })
+
+// getPriceGreaterThan('355').then(r =>{
+//     console.log(r);
+// })
+
+// findByIds(['0003']).then(r =>{
+//     console.log(r)
+// })
 module.exports = {
     getProducts,
-    getAll
+    getAll,
+    getPriceRange,
+    getExistanceGreaterThan,
+    findByIds
 };

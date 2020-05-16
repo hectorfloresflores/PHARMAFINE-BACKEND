@@ -3,7 +3,8 @@ const router = express.Router()
 
 /*For encrypt passwords */
 const {
-    getProducts
+    getProducts,
+    findByIds
 } = require('../db/products')
 const {
     User,
@@ -63,41 +64,46 @@ router.route('/checkout')
 
 
     })
+    .delete(tokenValidation,(req,res) =>{
+        let newCheckout = req.user.checkout.filter(product =>{
+            if (req.headers.product != product.split('-')[0]) {
+                return product;
+            }
+        });
+
+        updateUser({
+            email: req.user.email
+        }, {
+            checkout: newCheckout
+        }).then(response =>{
+
+            res.status(200).send(`Checkout updated`);
+
+        })
+    })
     .get(tokenValidation,(req, res) => {
-        existUser("email", req.headers.email).then(result => {
+
             
             // Get just the product ids
-            var productsQuantity = []
-            var productsId = result.checkout.map(e =>{
-                productsQuantity.push(e.split("-")[1])
+
+            var productsId = req.user.checkout.map(e =>{
+
                 return e.split("-")[0]
             })
-            
-            getProducts(productsId).then(products=>{
-                
-                products.forEach((product,index) =>{
-                    product.quantity = productsQuantity[index]
-                })
-                
-                console.log(products)
-                res.status(200).send(JSON.stringify(products))
-                return
-            })
-           
-            
-        })
-       
-        // res.status(400).send("Error")
-    })
-    .delete(tokenValidation,(req,res) =>{
 
-        deleteItemsCheckout(req.headers.email,req.body.products).then(result => {
-            if (result == true) {
-                res.status(200).send("Deleted")
-            }else{
-                res.status(400).send("Error")
+        findByIds(productsId).then(result => {
+            if (result) {
+                res.status(200).send(JSON.stringify(result))
+                return
+            } else {
+                res.status(400).send('error finding products ids')
+                return
             }
+
         })
+
+
     })
+
 
 module.exports = router;

@@ -1,7 +1,8 @@
 const express = require('express');
 const router = express.Router();
 
-const {getProducts, getAll} = require('../db/products')
+const {getProducts, getAll,getPriceRange,
+    getExistanceGreaterThan} = require('../db/products')
 
 router.route('/products')
 
@@ -17,9 +18,26 @@ router.route('/products')
      *          description: New message created!
      */
     .get((req, res) => {
-        getProducts(req.query.name).then(products =>{
-            res.status(200).send(products);
-        })
+
+        if (req.query.name != undefined) {
+            getProducts(req.query.name).then(products =>{
+                res.status(200).send(products);
+                return;
+            })
+        } else if (req.query.priceLow != undefined && req.query.priceHigh != undefined) {
+            getPriceRange(req.query.priceLow,req.query.priceHigh).then(products =>{
+                res.status(200).send(products);
+                return;
+            })
+        } else if (req.query.priceLow != undefined) {
+
+            getExistanceGreaterThan(req.query.priceLow).then(products => {
+
+                res.status(200).send(products);
+                return;
+            })
+        }
+
 
 })
 

@@ -18,13 +18,13 @@ const {
   tokenValidation,
   tokenSign
 } = require('../middlewares/authentication/jsonwebtoken')
-
+let ROOT_URL = 'https://pharmafine.herokuapp.com';
 passport.use(
   new GoogleStrategy(
     {
       clientID: clientID,
       clientSecret: clientSECRET,
-      callbackURL: "http://localhost:5000/auth/google/redirect"
+      callbackURL: `${ROOT_URL}/auth/google/redirect`
     },
     function(accessToken, refreshToken, profile, done) {
 
