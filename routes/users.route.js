@@ -98,6 +98,7 @@ router.route('/users')
                 
                 let theToken = tokenSign(req.body)
                 req.body.token = theToken;
+                req.body.role = 'USER';
 
                 createUser(req.body).then(result => {
                     if (result == false) {
