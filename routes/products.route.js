@@ -1,8 +1,16 @@
 const express = require('express');
 const router = express.Router();
 
-const {getProducts, getAll,getPriceRange,
+const {getProducts,
+    getAll,
+    getPriceRange,
+    createProduct,
     getExistanceGreaterThan} = require('../db/products')
+
+const {
+    tokenValidation,
+    tokenSign
+} = require('../middlewares/authentication/jsonwebtoken')
 
 router.route('/products')
 
@@ -39,6 +47,13 @@ router.route('/products')
         }
 
 
+
 })
+    .post(tokenValidation,(req,res) => {
+
+        createProduct(req.body).then(r =>{
+            res.status(200).send("Created")
+        })
+    })
 
 module.exports = router;

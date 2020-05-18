@@ -130,5 +130,6 @@ module.exports = {
     getAll,
     getPriceRange,
     getExistanceGreaterThan,
-    findByIds
+    findByIds,
+    createProduct
 };
